@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bavugiatransferimgtodocs</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--tx:#1b1f2a;--mu:#667085;--bd:#e1e5ee;--ac:#2563eb;--acx:#fff;--dz:#eaf1ff;--ok:#16a34a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1320;--card:#181d2e;--tx:#e8ebf5;--mu:#9aa3b8;--bd:#2a3150;--ac:#5b8cff;--acx:#0b1020;--dz:#1a2240;--ok:#4ade80}}
+:root[data-theme="dark"]{--bg:#0f1320;--card:#181d2e;--tx:#e8ebf5;--mu:#9aa3b8;--bd:#2a3150;--ac:#5b8cff;--acx:#0b1020;--dz:#1a2240;--ok:#4ade80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:clamp(22px,4vw,32px);margin:8px 0 4px;letter-spacing:-.5px}
+.sub{color:var(--mu);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:16px}
+.dz{border:2px dashed var(--ac);background:var(--dz);border-radius:14px;padding:34px 16px;text-align:center;cursor:pointer;margin-bottom:16px}
+.dz.on{outline:3px solid var(--ac)}
+.dz b{font-size:17px}.dz span{display:block;color:var(--mu);margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+label{display:block;font-size:13px;color:var(--mu);margin-bottom:4px}
+select,input[type=text],input[type=number]{width:100%;padding:9px 10px;border-radius:9px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit}
+button{font:inherit;cursor:pointer;border-radius:9px;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 12px}
+button:hover{border-color:var(--ac)}
+.pri{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600;padding:12px 22px;font-size:16px}
+.pri:disabled{opacity:.5;cursor:not-allowed}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.bar .sp{flex:1}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.it{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--bg)}
+.th{height:150px;display:flex;align-items:center;justify-content:center;background:#8883}
+.th img{max-width:100%;max-height:100%;transition:transform .2s}
+.mt{padding:6px 8px;font-size:12px}
+.mt div{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mt .d{color:var(--mu)}
+.ac{display:flex;gap:4px;padding:0 6px 8px}
+.ac button{flex:1;padding:4px 0;font-size:13px}
+.pg{height:8px;background:var(--bd);border-radius:6px;overflow:hidden;margin-top:12px;display:none}
+.pg i{display:block;height:100%;width:0;background:var(--ac);transition:width .15s}
+#st{margin-top:10px;color:var(--mu)}
+#st a{color:var(--ok);font-weight:600}
+.n{display:inline-block;background:var(--ac);color:var(--acx);border-radius:6px;padding:0 6px;font-weight:700;margin-right:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📄 Bavugiatransferimgtodocs</h1>
+  <p class="sub">Gom ảnh thành file Word (.docx) hoặc PDF, mỗi ảnh một trang. Không giới hạn số lượng ảnh, xử lý ngay trên trình duyệt, ảnh không bị tải lên máy chủ.</p>
+
+  <div class="dz" id="dz"><b>Kéo thả ảnh vào đây hoặc bấm để chọn</b><span>JPG, PNG, WebP, BMP, GIF… chọn được nhiều ảnh cùng lúc</span></div>
+  <input type="file" id="fi" accept="image/*" multiple hidden>
+
+  <div class="card">
+    <div class="grid">
+      <div><label>Khổ giấy</label><select id="pg"><option value="A4">A4 (210 × 297 mm)</option><option value="A3">A3 (297 × 420 mm)</option><option value="A5">A5 (148 × 210 mm)</option><option value="B5">B5 (176 × 250 mm)</option><option value="Letter">Letter (216 × 279 mm)</option></select></div>
+      <div><label>Hướng trang</label><select id="or"><option value="auto">Tự động theo ảnh</option><option value="p">Luôn dọc</option><option value="l">Luôn ngang</option></select></div>
+      <div><label>Lề trang (mm, 0 = ảnh full trang)</label><input type="number" id="mg" value="0" min="0" max="100" step="1"></div>
+      <div><label>Vị trí ảnh trên trang</label><select id="va"><option value="top">Sát phía trên</option><option value="center">Căn giữa trang</option></select></div>
+      <div><label>Chất lượng ảnh</label><select id="q"><option value="1">Gốc (nặng, nét nhất)</option><option value="2">Cân bằng (khuyên dùng)</option><option value="3">Nhỏ gọn (file nhẹ)</option><option value="4">✨ Cải thiện HD (làm nét, cân màu, khử bụi)</option></select></div>
+      <div><label>Phóng to ảnh (chỉ khi chọn Cải thiện HD)</label><select id="up"><option value="1">Giữ kích thước, chỉ làm nét</option><option value="2" selected>Phóng to 2×</option><option value="4">Phóng to 4× (chậm, tối đa 6000 px)</option></select></div>
+      <div style="grid-column:1/-1"><label style="display:flex;gap:8px;align-items:flex-start;color:var(--tx);margin:0"><input type="checkbox" id="sm" style="margin-top:4px"><span><b>Giảm dung lượng file</b> (tùy chọn): tự co ảnh vừa đủ độ nét theo khổ giấy (300 / 200 / 120 dpi, 250 dpi ở chế độ HD) và nén thông minh, file thường nhẹ hơn nhiều lần. Bỏ tick để giữ chất lượng tốt nhất.</span></label></div>
+      <div><label>Định dạng xuất</label><select id="ft"><option value="docx">Word (.docx)</option><option value="pdf">PDF (.pdf)</option><option value="both">Cả Word và PDF</option></select></div>
+      <div><label>Tên file (không cần đuôi)</label><input type="text" id="fn" value="Bavugiatransferimgtodocs"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="bar">
+      <b id="cnt">0 ảnh</b><span class="sp"></span>
+      <label style="margin:0"><input type="checkbox" id="as" checked> Tự xếp A–Z khi thêm</label>
+      <button id="bs">Sắp xếp A–Z</button><button id="br">Đảo ngược</button><button id="bc">Xóa hết</button>
+    </div>
+    <div class="list" id="ls"></div>
+    <p id="em" style="color:var(--mu);text-align:center;margin:20px 0 6px">Chưa có ảnh nào.</p>
+  </div>
+
+  <button class="pri" id="go" disabled>Chuyển đổi</button>
+  <div class="pg" id="pb"><i id="pi"></i></div>
+  <div id="st"></div>
+  <div class="bar" id="dl" style="margin-top:12px"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const PAGES={A4:[210,297],A3:[297,420],A5:[148,210],B5:[176,250],Letter:[215.9,279.4]};
+const QS={1:{q:.95},2:{q:.85,max:2600},3:{q:.7,max:1600},4:{q:.95,en:1}};
+const QO={1:{q:.9,dpi:300},2:{q:.82,dpi:200},3:{q:.7,dpi:120},4:{q:.82,dpi:250,en:1}};
+const nk=s=>s.toLowerCase().split(/(\d+)/).map(t=>/^\d+$/.test(t)?+t:t);
+const cmp=(a,b)=>{const x=nk(a.name),y=nk(b.name);for(let i=0;i<Math.min(x.length,y.length);i++){if(x[i]<y[i])return-1;if(x[i]>y[i])return 1}return x.length-y.length};
+let items=[],uid=0;
+
+async function add(files){
+  const fs=[...files].filter(f=>f.type.startsWith('image/'));
+  for(const f of fs){
+    const url=URL.createObjectURL(f),img=new Image();img.src=url;
+    try{await img.decode()}catch(e){continue}
+    items.push({id:++uid,name:f.name,url,img,w:img.naturalWidth,h:img.naturalHeight,rot:0});
+  }
+  if($('as').checked)items.sort(cmp);
+  render();
+}
+function render(){
+  const ls=$('ls');ls.innerHTML='';
+  items.forEach((it,i)=>{
+    const d=document.createElement('div');d.className='it';
+    d.innerHTML='<div class="th"><img alt=""></div><div class="mt"><div class="nm"></div><div class="d"></div></div><div class="ac"><button data-a="u" title="Lên">◀</button><button data-a="d" title="Xuống">▶</button><button data-a="r" title="Xoay 90°">⟳</button><button data-a="x" title="Xóa">✕</button></div>';
+    const im=d.querySelector('img');im.src=it.url;im.style.transform='rotate('+it.rot+'deg)';
+    if(it.rot%180)im.style.maxWidth=im.style.maxHeight='150px';
+    d.querySelector('.nm').innerHTML='<span class="n">'+(i+1)+'</span>';
+    d.querySelector('.nm').append(it.name);d.querySelector('.nm').title=it.name;
+    d.querySelector('.d').textContent=it.w+' × '+it.h+' px';
+    d.querySelectorAll('button').forEach(b=>b.onclick=()=>act(it.id,b.dataset.a));
+    ls.appendChild(d);
+  });
+  $('cnt').textContent=items.length+' ảnh';
+  $('em').style.display=items.length?'none':'block';
+  $('go').disabled=!items.length;
+}
+function act(id,a){
+  const i=items.findIndex(x=>x.id===id);
+  if(a==='x'){URL.revokeObjectURL(items[i].url);items.splice(i,1)}
+  else if(a==='r')items[i].rot=(items[i].rot+90)%360;
+  else{const j=a==='u'?i-1:i+1;if(j>=0&&j<items.length)[items[i],items[j]]=[items[j],items[i]]}
+  render();
+}
+const dz=$('dz'),fi=$('fi');
+dz.onclick=()=>fi.click();
+fi.onchange=()=>{add(fi.files);fi.value=''};
+['dragenter','dragover'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.add('on')}));
+['dragleave','drop'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.remove('on')}));
+dz.addEventListener('drop',ev=>add(ev.dataTransfer.files));
+$('bs').onclick=()=>{items.sort(cmp);render()};
+$('br').onclick=()=>{items.reverse();render()};
+$('bc').onclick=()=>{items.forEach(x=>URL.revokeObjectURL(x.url));items=[];render();$('st').textContent=''};
+
+const mm2tw=m=>Math.round(m/25.4*1440), mm2emu=m=>Math.round(m*36000);
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+
+function toBlob(c,q){return new Promise(r=>c.toBlob(r,'image/jpeg',q))}
+function scaleTo(img,iw,ih,tw,th){
+  let src=img,cw=iw,ch=ih;
+  while(cw<tw){const nw=Math.min(tw,cw*2),nh=Math.round(ch*nw/cw),t=document.createElement('canvas');
+    t.width=nw;t.height=nh;const g=t.getContext('2d');g.imageSmoothingQuality='high';g.drawImage(src,0,0,nw,nh);src=t;cw=nw;ch=nh}
+  return src;
+}
+function enhance(c){
+  const x=c.getContext('2d'),W=c.width,H=c.height,im=x.getImageData(0,0,W,H),d=im.data,N=W*H;
+  const h=[new Uint32Array(256),new Uint32Array(256),new Uint32Array(256)];
+  for(let i=0;i<d.length;i+=4){h[0][d[i]]++;h[1][d[i+1]]++;h[2][d[i+2]]++}
+  const lut=h.map(a=>{let s=0,lo=0,hi=255;const t=N*.005;
+    for(;lo<255;lo++){s+=a[lo];if(s>t)break}
+    s=0;for(;hi>0;hi--){s+=a[hi];if(s>t)break}
+    if(hi-lo<40){lo=0;hi=255}
+    const l=new Uint8ClampedArray(256);for(let v=0;v<256;v++)l[v]=(v-lo)*255/(hi-lo);return l});
+  for(let i=0;i<d.length;i+=4){
+    const r=lut[0][d[i]],g=lut[1][d[i+1]],b=lut[2][d[i+2]],y=.299*r+.587*g+.114*b;
+    d[i]=y+(r-y)*1.12;d[i+1]=y+(g-y)*1.12;d[i+2]=y+(b-y)*1.12;
+  }
+  const s=new Uint8ClampedArray(d),R=W*4;
+  for(let y=1;y<H-1;y++)for(let i=1;i<W-1;i++){const p=y*R+i*4;
+    for(let k=0;k<3;k++){
+      const q=p+k,e=s[q],a=s[q-4],b=s[q+4],u=s[q-R],v=s[q+R],A=s[q-R-4],B=s[q-R+4],C=s[q+R-4],D=s[q+R+4];
+      const mx=Math.max(a,b,u,v,A,B,C,D),mn=Math.min(a,b,u,v,A,B,C,D);
+      if(e>mx+25||e<mn-25)d[q]=(a+b+u+v)/4;
+      else{const bl=(4*e+2*(a+b+u+v)+A+B+C+D)/16;d[q]=e+1.1*(e-bl)}
+    }}
+  x.putImageData(im,0,0);
+}
+function makePdf(pg){
+  if(!window.jspdf)throw new Error('Không tải được thư viện PDF, hãy kiểm tra mạng rồi thử lại');
+  const {jsPDF}=window.jspdf;let d=null;
+  pg.forEach(p=>{const o=p.land?'l':'p',f=[Math.min(p.pw,p.ph),Math.max(p.pw,p.ph)];
+    if(!d)d=new jsPDF({unit:'mm',format:f,orientation:o,compress:true});else d.addPage(f,o);
+    d.addImage(new Uint8Array(p.buf),'JPEG',p.x,p.y,p.w,p.h,undefined,'NONE');});
+  return d.output('blob');
+}
+async function saveFile(n,b){
+  const st=$('st');let dls=null;
+  try{dls=window.claude?await claude.use('downloads'):null}catch(e){}
+  if(dls){
+    try{await dls.save({filename:n,data:b});st.textContent='Đã tải '+n+' về máy.'}
+    catch(e){st.textContent=e.code==='declined'?'Bạn đã hủy tải file, bấm lại nút để tải.':'Không tải được: '+(e.message||e.code)}
+  }else{
+    const u=URL.createObjectURL(b),a=document.createElement('a');
+    a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();
+  }
+}
+function showDl(res){
+  const dl=$('dl');dl.innerHTML='';
+  res.forEach(([n,b])=>{const bt=document.createElement('button');bt.className='pri';
+    bt.textContent='⬇ Tải '+n+' ('+(b.size/1048576).toFixed(2)+' MB)';
+    bt.onclick=()=>saveFile(n,b);dl.appendChild(bt)});
+  const tot=res.reduce((a,r)=>a+r[1].size,0);$('st').textContent='Hoàn tất '+items.length+' trang. Bấm nút bên dưới để tải về máy.'+(tot>15728640&&!$('sm').checked?' File khá nặng, hãy tick "Giảm dung lượng file" rồi chuyển đổi lại để nhẹ hơn.':'');
+}
+
+$('go').onclick=async()=>{
+  const btn=$('go'),st=$('st'),pb=$('pb'),pi=$('pi');
+  btn.disabled=true;pb.style.display='block';pi.style.width='0';st.textContent='Đang xử lý…';$('dl').innerHTML='';
+  try{
+    const [PW,PH]=PAGES[$('pg').value],orient=$('or').value,m=Math.max(0,+$('mg').value||0),
+          vAlign=$('va').value==='center',Q=($('sm').checked?QO:QS)[$('q').value];
+    const zip=new JSZip(),rels=[],body=[],pages=[];
+    for(let i=0;i<items.length;i++){
+      const it=items[i],odd=it.rot%180!==0;
+      const ow=odd?it.h:it.w,oh=odd?it.w:it.h,ld=orient==='l'||(orient==='auto'&&ow>oh),ppw=ld?PH:PW,pph=ld?PW:PH,fit=Math.max(Math.min((ppw-2*m)/ow,(pph-2*m)/oh)*.995,.001),kt=Q.dpi?fit/25.4*Q.dpi:Infinity;
+      let iw=it.w,ih=it.h,k=1,src=it.img;
+      const long=Math.max(iw,ih);
+      k=Q.en?Math.min(kt,+$('up').value,6000/long):Math.min(1,kt,Q.max?Q.max/long:1);
+      iw=Math.round(iw*k);ih=Math.round(ih*k);
+      
+      {const f=k;
+        if(f>1){iw=Math.round(it.w*f);ih=Math.round(it.h*f);src=scaleTo(it.img,it.w,it.h,iw,ih)}}
+      const W=odd?ih:iw,H=odd?iw:ih;
+      const c=document.createElement('canvas');c.width=W;c.height=H;
+      const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);
+      x.translate(W/2,H/2);x.rotate(it.rot*Math.PI/180);x.drawImage(src,-iw/2,-ih/2,iw,ih);
+      if(Q.en){st.textContent='Đang cải thiện ảnh '+(i+1)+'/'+items.length+' (có thể mất vài giây)…';await new Promise(r=>setTimeout(r,20));x.setTransform(1,0,0,1,0,0);enhance(c)}
+      const blob=await toBlob(c,Q.q);
+      const jb=await blob.arrayBuffer();zip.file('word/media/img'+(i+1)+'.jpg',jb.slice(0));
+      c.width=c.height=0;
+      rels.push('<Relationship Id="rId'+(i+10)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/img'+(i+1)+'.jpg"/>');
+
+      let land=orient==='l'||(orient==='auto'&&W>H);
+      const pw=land?PH:PW,ph=land?PW:PH;
+      const cw=Math.max(pw-2*m,1),ch=Math.max(ph-2*m,1);
+      const s=Math.min(cw/W,ch/H)*0.995;
+      const ex=mm2emu(W*s),ey=mm2emu(H*s);
+      const sect='<w:sectPr><w:pgSz w:w="'+mm2tw(pw)+'" w:h="'+mm2tw(ph)+'"'+(land?' w:orient="landscape"':'')+'/><w:pgMar w:top="'+mm2tw(m)+'" w:right="'+mm2tw(m)+'" w:bottom="'+mm2tw(m)+'" w:left="'+mm2tw(m)+'" w:header="0" w:footer="0" w:gutter="0"/>'+(vAlign?'<w:vAlign w:val="center"/>':'')+'</w:sectPr>';
+      const p='<w:p><w:pPr><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/>'+(i<items.length-1?sect:'')+'</w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="'+ex+'" cy="'+ey+'"/><wp:docPr id="'+(i+1)+'" name="'+esc(it.name)+'"/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic><pic:nvPicPr><pic:cNvPr id="'+(i+1)+'" name="img'+(i+1)+'.jpg"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rId'+(i+10)+'"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="'+ex+'" cy="'+ey+'"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>';
+      body.push(p);pages.push({buf:jb,land,pw,ph,w:W*s,h:H*s,x:m+(cw-W*s)/2,y:vAlign?m+(ch-H*s)/2:m});
+      if(i===items.length-1)body.push(sect);
+      pi.style.width=((i+1)/items.length*95)+'%';
+      st.textContent='Đang xử lý ảnh '+(i+1)+'/'+items.length+'…';
+      await new Promise(r=>setTimeout(r));
+    }
+    const X='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+    zip.file('[Content_Types].xml',X+'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="jpg" ContentType="image/jpeg"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>');
+    zip.file('_rels/.rels',X+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
+    zip.file('word/_rels/document.xml.rels',X+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+rels.join('')+'</Relationships>');
+    zip.file('word/document.xml',X+'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>'+body.join('')+'</w:body></w:document>');
+    const base=($('fn').value.trim()||'Bavugiatransferimgtodocs').replace(/[\\/:*?"<>|]/g,'_'),fmt=$('ft').value,res=[];
+    if(fmt!=='pdf'){
+      st.textContent='Đang đóng gói file Word…';
+      res.push([base+'.docx',await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:1}})]);
+    }
+    if(fmt!=='docx'){
+      st.textContent='Đang tạo file PDF…';await new Promise(r=>setTimeout(r));
+      res.push([base+'.pdf',makePdf(pages)]);
+    }
+    pi.style.width='100%';
+    showDl(res);
+  }catch(e){
+    st.textContent='Có lỗi xảy ra: '+e.message;
+  }
+  btn.disabled=!items.length;
+};
+</script>
+</body>
+</html>
