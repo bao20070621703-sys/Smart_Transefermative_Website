@@ -22,7 +22,7 @@ body{margin:0;min-height:100vh;transition:background-color .4s,color .3s;backgro
 .hd{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
 .lg{width:46px;height:46px;border-radius:10px;flex:none}
 h1{font-size:clamp(20px,4vw,32px);margin:0;letter-spacing:-.5px}
-.rt{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.rt{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .au{font-style:italic;font-size:13px;color:var(--mu);white-space:nowrap}
 .sub{color:var(--mu);margin:10px 0 0}
 @media(max-width:480px){h1{font-size:18px;white-space:nowrap}.lg{width:36px;height:36px}.hd{gap:8px}.au{font-size:11px}.tsw{width:158px}.tsw .dt{font-size:13px;padding:8px 10px}}
@@ -45,7 +45,7 @@ input[type=checkbox]{accent-color:var(--ac)}
 .dt{width:100%;display:flex;justify-content:space-between;align-items:center;gap:8px;text-align:left;padding:9px 12px;font-weight:500}
 .dt::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .25s cubic-bezier(.3,1.5,.5,1)}
 .dd.open .dt::after{transform:rotate(-135deg) translateY(-2px)}
-.mn{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:50;list-style:none;margin:0;padding:6px;max-height:280px;overflow:auto;background:var(--mn);color:var(--tx);border:1px solid var(--bd);border-radius:12px;box-shadow:0 16px 36px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-10px) scale(.96);transform-origin:top;transition:opacity .18s,transform .22s cubic-bezier(.2,1.2,.4,1),visibility .22s}
+.mn{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:50;list-style:none;margin:0;padding:6px;max-height:236px;overflow:auto;background:var(--mn);color:var(--tx);border:1px solid var(--bd);border-radius:12px;box-shadow:0 16px 36px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-10px) scale(.96);transform-origin:top;transition:opacity .18s,transform .22s cubic-bezier(.2,1.2,.4,1),visibility .22s}
 .dd.open .mn{opacity:1;visibility:visible;transform:none}
 .mn li{padding:9px 11px;border-radius:8px;cursor:pointer;transition:background-color .12s,color .12s,transform .12s cubic-bezier(.3,1.7,.5,1)}
 .mn li:hover{background:var(--hv);color:var(--hvx);transform:translateX(3px)}
@@ -77,13 +77,42 @@ button:hover{border-color:var(--ac)}
 .n{display:inline-block;background:var(--ac);color:var(--acx);border-radius:6px;padding:0 6px;font-weight:700;margin-right:4px}
 textarea{width:100%;min-height:170px;padding:10px;border-radius:9px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font:inherit;resize:vertical}
 .hint{color:var(--mu);font-size:13px;margin:6px 0 10px}code{background:var(--dz);padding:0 4px;border-radius:4px}
+
+.ov{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:radial-gradient(circle at 50% 45%,rgba(0,0,0,.42) 0%,rgba(0,0,0,.82) 100%);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.ov.show{opacity:1;visibility:visible}
+.md{width:min(660px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;background:var(--mn);color:var(--tx);border:1px solid var(--bd);border-radius:18px;box-shadow:0 0 0 1px rgba(255,255,255,.06),0 30px 80px rgba(0,0,0,.65),0 0 70px color-mix(in srgb,var(--ac) 28%,transparent);transform:translateY(28px) scale(.92);opacity:0;transition:transform .4s cubic-bezier(.2,1.25,.4,1),opacity .3s}
+.ov.show .md{transform:none;opacity:1}
+.md.sm{width:min(480px,100%)}
+.mh{padding:20px 24px 8px;font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.mb{padding:6px 24px 14px;overflow:auto;line-height:1.6}
+.mb h4{margin:16px 0 6px;font-size:15px;color:var(--ac)}
+.mb ol,.mb ul{margin:6px 0;padding-left:22px}.mb li{margin:5px 0}.mb p{margin:8px 0}
+#wb{max-height:min(46vh,330px)}
+.mf{padding:12px 24px 20px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.mf button{min-width:110px;padding:10px 18px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.inf{margin-top:14px;padding:12px 14px;border:1px solid var(--bd);border-radius:12px;background:var(--in)}
+.inf h4{margin:0 0 6px}.inf div.r{display:flex;justify-content:space-between;gap:14px;padding:3px 0;border-bottom:1px dashed var(--bd)}
+.inf div.r:last-child{border:0}.inf div.r span:last-child{font-weight:600;text-align:right}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.warn{color:var(--ac);font-size:13px;margin-top:8px}
+.tl{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.lsw{width:150px}.lsw .dt{font-weight:600;white-space:nowrap}
+.mn::-webkit-scrollbar,.mb::-webkit-scrollbar{width:15px}
+.mn::-webkit-scrollbar-track,.mb::-webkit-scrollbar-track{background:var(--in);border-radius:8px}
+.mn::-webkit-scrollbar-thumb,.mb::-webkit-scrollbar-thumb{background:var(--mu);border-radius:8px;border:2px solid var(--in)}
+.mn::-webkit-scrollbar-thumb:hover,.mb::-webkit-scrollbar-thumb:hover{background:var(--ac)}
+.mn::-webkit-scrollbar-button:single-button,.mb::-webkit-scrollbar-button:single-button{display:block;height:15px;width:15px;background-color:var(--in);background-repeat:no-repeat;background-position:center;background-size:9px;border-radius:6px}
+.mn::-webkit-scrollbar-button:single-button:vertical:decrement,.mb::-webkit-scrollbar-button:single-button:vertical:decrement{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath d='M1 7l4-4 4 4z' fill='%239aa3b8'/%3E%3C/svg%3E")}
+.mn::-webkit-scrollbar-button:single-button:vertical:increment,.mb::-webkit-scrollbar-button:single-button:vertical:increment{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Cpath d='M1 3l4 4 4-4z' fill='%239aa3b8'/%3E%3C/svg%3E")}
+.mn::-webkit-scrollbar-button:single-button:hover,.mb::-webkit-scrollbar-button:single-button:hover{background-color:var(--ac)}
+@supports not selector(::-webkit-scrollbar){.mn,.mb{scrollbar-width:thin;scrollbar-color:var(--mu) var(--in)}}
 </style>
 </head>
 <body>
 <div id="bg" aria-hidden="true"></div>
 <div class="wrap">
-  <div class="top"><header class="hd"><img class="lg" alt="Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAkFBMVEX/4EL/3kH/3EH+3UP/3Dz+20P920T920P+20H92kL/10H820T820H72UL72EL24YLZ3sX3yT7yvz3jrjm6t43bjzLWhjGpiVKMazxiTDJFPjY+Ni0wLCkrKikqKiksKSkpKSkpKSgoKSksKCgpKCkpKCgpKCcoKCkoKCgmKCgnJigjJSchJCghISYcICgaHCLbtmRFAAALKklEQVR42u1aiXaqyhJlkKFFOgcUBWQQIxdl8v//7lV1I4KioknMWm+lzr0JcerdXdPehcL+l034A/AH4M5zyYWNeMlNewlAURbcSmZFlF68IIoPZfPkI8tfAHBYX1h1iHu7Cos6WI8zP86fBpCUns3N4ma7eV10rKzX7twaY7a1yrfPn0BUu1NdkmSJm65LjtfblWtLo4yKq+KQvBADiICaRmtUnNods0SJGiMM1q+y6JUgTBGBSbTWzFl3Y7JJFDDtgVFhBcGzy16pAxwBWLsbs2tjtm/C/stD9GohYggk8Qsm4f6j1ythmtTu/Et2J/5GleI0KeMvWZFFX+wF0S47fMGi6MvNKH3RsFim6V87/gPwB+APwB+AnwTQrbu/AaDXc34IwF2tEQYde0KK3ASQJpcHebijNIoyWJ7Nra8EyiG9s68hAGkO3C3sqp/DA9mxdFpzr18aDLslCcNtWSTXAJJi7X/WdbkNw+bZ9BA4FqqSkzjp/7at+fkEbKsjYPiT6+sj2ERhUtR17q/PCM4ADgEQOG8NIE7PhlyZ9EyWW6EiWPwIlvDvUovouluHV5s/wGevPSCZQwBgOW8q6tbc9dbFZr9LMSgKR6aaoYIRsBPVbv7WTIdv31nOBeDop5cQopriPLjiokkReK5jTyXBPYZDQRhVzoxKojC1PY4+BUyWeVt5yDbjvQDDFkj3CZVOm4/Ydtdfz6fA0+msB64LoPQtAtKDivbpiMJ6KdJb4kdRBTBZgFCw+gCouKwiJoWyVhClYbUUKKgZOu15p1sHwnolmuz9bh2zN8XF2p6pN8+AUmoS+QoAmVleeRkBMXgY9gLecapuqgk9J61t8DgxiOWXiGC3i2tXojcAEGHuOLaAAHouUKi0vIrANPuci/Ai1bS83pO9Sghhr8ByBPVsyM5vB7nBTmUYAC59dQJEBxdGF2IUPlrHncBH98H1AKTbHS6nayYLInQg5sZjAL0TYE5unH866ygPbJ0omgLgyuR2L0BHmYaiQBrl2Q4/JI0gFQczgci9E2gRwHs/txc1CPJpBQkN4GQIr/ROM4pqCFVFIVQ/7SIqPYuo6sD+KYRAA8CxDdngjxvmtOPkpk/HLMEYuOCiQF4CgFfODE2ZQSo2qprlhnK9vs3KkC3L7LfThIFOBUhBiJ8eACgxoqnrzDvx/XYcYtirikqFVXNWPDeG/L905jadTKw5g8ARQAqyDMr6Hwqe1RWFis7VrE+4qteBLZuqOms+6BTADQLlvD4UYDoRjIUxESeWc0JApesmAF1tLpmaaYpTrwofERLsQFRTNSo4VdSk8G4OQTbDWo+TGaLC+bMGYHzoxr/F5GNhTAGBYzInrw9IVsL4HGusmKhEmjpeET9kRLtNzjJfxWCKm4nhemlNmUnQK2aqSmE9WH8Bqxvw89/CmLFHwAHLzyIvoOfW9Sna4O02UUxp7hV1NIKSxU3mm/L8s/mMqMzXnu97vue67tKawQEsHZkYsLI+gZ/we2LBQ1TWKG9Qq9XKbeI9jeuVQDUoz8coHMUJI+waSs+dybaskWbhxo7uFPuwJU4mxocx0RsATT2SZVHg/+ZxnvIUhJaKw8I62GXZGABwZBbWFYNgV0wbvhglSRSFYJBSU9it/rGA+AMP6OCCf4aOpzKXiarxER6lTTXYQSUTTUOzOyTkEStmqagN1G3+bOXhWgbbN0aB/vFhSIYAmeCYcpMsJq8GPAKnVKdDDOkmAEwbVtigc5Xxf1cIShcqIAfw8e8DDmEyWSxECEwMglND9nnJTzPsZhBP/23T8bqAocYoEJwy3va0EKQYRCmWYGOxIOoEgnABIFoAfJyKZSw8nybplecRANKkdETKqFX35JIINVBeHD0sApPJRAZCJGEuwLXA0kCUMFFF4eRxTEF9xmpK+owygk3y5iG3zQOqelkyEeT7LqtChowM3BSgDhGDstScMloOaXjCDTxMpCo6JHpOmmEHoozc8I/KAEDmOpjitjXFeFM1XBL7gTVBbijAYy67nxDkuzzfpW0TIEjxwie1IXYg3TAUAM8IBOwfvCnoOLjWGyaCZ847IYCysSl7xxwkW7HdZ03GbXMg7ES+lYJ3AKS8KwI7w3DaIQBULgbeodAMXgmxHyGGRh3AX8Em7slSRvF0U7lzADcBpAcgkaoC5KhtCaxGK5wMYeXnABoM+N9lpLPOSoh0ycLGyXPmPsXA/pZvdgzUJme5ATUSj//SHDe/LmjAw4h4zwO3AXAhgXHYshgUSjOj4UN45Gd5zBxwsUwC7MowhmjYOABxBctp4AM4wnxzzg21RdDb/zIoo+0AvwQAq/rzpQlJm4ptFqFQIgyAokDt75obXHINFjLIA0WnjrJXACT5Grk8mbWFfd8KJVUhgtyaKayO2cX6qDEkUyFcY7wEAJcDNaMTE7Rm0rSpeC4a7AQU0lJ1E6VQvB+WQvjmV29aYSoyanLuJXErlBRN7UmhCyLMKhmQCkLa43thShaWni1SA/ncZ8b5FWP4fYo+JIX2TAoBraHCvSr0CEAWVWtHAUlntnwCCdasNwyYnUtVx3uQgiinTG0eFNEXBpVhmbuwIGNU2FBTnhsdoUQGnRzVDsop5TYTGjspjaMjeF1l7CzFlhA3zm0PYDbgZF5GCfMOL6Ovj2pR2ArUmFnnOETl0k4jTKkr97KmkSAP03XyIAXHzYoxnmeGKTplxFvC9rMzsyAySqGLRsZZLQEisHy0/phhNe/MtA01dr4ntWpe613OwxQ+Kinjr0/L2XjH6LAznJ1hhKEDUO9m1yl4VjbZN4zrccu0I5TYuIEAABCs1jXd5SekcEL5cGg+6n5BWDkCJVpDLFKMQxlHbnwgeB008GqARwfqw6sAcMsKm1m0cSkTOAB9gOygvjc1Qx2aRrx8x4RVH0KmF6nIvdL/esgGZRVQKQMHgo8PYCQA3lqgrBSbZpnckXFIGhyAsO4GZjyMh4Tfd88Im6vZtL30FGhDgquR1sAi7jLBpwHsIBVB9+GWN0nDtyTdyZOB4QIfCEruGAeMv2sGbVgwOTvLcPYWQ7FB7TyQgshUsAkc0m8EwLgJSBKkF2HKneBeO5mXaVVTx6XgEwC4VEPBvqzCXXNL65ptMx6mqjgQrKLdd57Afp/jqI8PYpticLhaPykCBnNmWn498sbhWADN1BzvBuXbXXcM22exItW7RP4bTyBCpY/3EhT3GA93mKTyLR1yELtgnnw3ABRaZKYRA8R2PszytvlSYhgxBXfffvM6xPMlXY4+EKgK0dnNhm2SfjsAnA9ANTSkmyUuQcpOOA/b/sDte96BTMHJt/vB/YVH6NIqsuRw/Kc+AQDnA4JpMpqTDbg4iyEIZzO9nfN/+xcYohoXmHpVMgyAkeFnUvDpb1BgHCp3xg0R0AZydxzxRQAY50CLojsAp9ORXfAlAGzsdeeEsVa0hfJHAABDd7xyc7tn5o73VAQ8/S0acEJw7xszB3/73Ac+/TWepMjvCvoi/WEA+/tNJot/HMB320sANnjvKMRYjK4u3gFgUx3RQCNs+hf55i0ANpW3QvOriF+ti+YiKDbvABAe8UYdWHD02O9FdLp4F4AVrAXr+Yikd7F+HsGrAAKvWbdwmwt89I0A1icA4QlA9V4Aweq07i8BaF3vL34HANr6lA6/AgCW9H4TgH8KwsUvuSBwfzkIg6s0fHMd8E/rbk4Xa3z0vVnQB8C6w1sBLPIzAJ89sqqit7Tjwvd8sDzP4WK/9vxgX+HXfPwqfxMhKY5ASSq4quAn/JHzh6p3MaL9JkLjF+z/5qG3ccJfJ6V/AP6vAPwPm1dwKK/fBBoAAAAASUVORK5CYII="><h1>Swiftly Convert App</h1><div class="rt"><div class="tsw"><select id="th" autocomplete="off"><option value="def">Default</option><option value="dark">Dark</option><option value="hot">Hot themes</option><option value="cool">Cool themes</option></select></div><span class="au">Author: BVG</span></div></header>
-  <p class="sub">Chuyển đổi giữa ảnh và tài liệu: nhận ảnh, TXT, Word, PDF, PowerPoint, Excel và xuất ra Word, PDF, PowerPoint, Excel hoặc TXT. Xử lý ngay trên trình duyệt, không tải dữ liệu lên máy chủ.</p></div>
+  <div class="top"><header class="hd"><img class="lg" alt="Logo" src="data:image/png;base64,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"><h1>Swiftly Convert App</h1><div class="rt"><div class="tl"><div class="lsw"><select id="lg" autocomplete="off"><option value="vi">🌐 Tiếng Việt</option><option value="en">🌐 English</option></select></div><div class="tsw"><select id="th" autocomplete="off"><option value="def">Mặc định</option><option value="dark">Giao diện tối</option><option value="hot">Giao diện nóng</option><option value="cool">Giao diện lạnh</option></select></div></div><span class="au">Author: BVG</span></div></header>
+  <p class="sub">Chuyển đổi qua lại giữa ảnh và tài liệu (TXT, Word, PDF, PowerPoint, Excel), xuất ra Word, PDF, PowerPoint, Excel, TXT, JPG hoặc PNG và giữ nguyên giao diện gốc. Xử lý ngay trên trình duyệt, không tải dữ liệu lên máy chủ.</p></div>
 
   <div class="dz" id="dz"><b>Kéo thả ảnh vào đây hoặc bấm để chọn</b><span>JPG, PNG, WebP, BMP, GIF… chọn được nhiều ảnh cùng lúc</span></div>
   <input type="file" id="fi" accept="image/*" multiple hidden>
@@ -93,7 +122,7 @@ textarea{width:100%;min-height:170px;padding:10px;border-radius:9px;border:1px s
     <div class="dz" id="dz2" style="margin-bottom:12px"><b>Kéo thả tài liệu vào đây hoặc bấm để chọn</b><span>TXT, DOCX, PDF, PPTX, XLSX, CSV · chọn nhiều file cùng lúc</span></div>
     <input type="file" id="fd" accept=".txt,.md,.csv,.docx,.pdf,.pptx,.xlsx,.xls" multiple hidden>
     <div id="dls"></div>
-    <p class="hint">Trang đọc lấy chữ, tiêu đề và bảng từ tài liệu rồi xuất sang định dạng bạn chọn. Hình ảnh nằm trong tài liệu và bố cục phức tạp không được giữ. PDF dạng ảnh scan không có lớp chữ nên không đọc được. Khi xuất kèm ảnh: chữ đứng trước, ảnh đứng sau. Excel và TXT chỉ xuất phần chữ.</p>
+    <p class="hint">Ở chế độ "Giữ nguyên giao diện", tài liệu được dựng lại từng trang với phông chữ, màu sắc, bảng và hình ảnh rồi mới xuất; ở chế độ "Chỉnh sửa được", trang chỉ trích chữ, tiêu đề và bảng. Chuyển sang đúng định dạng gốc sẽ sao chép nguyên bản file (có thể nén). Excel và TXT luôn chỉ xuất chữ và bảng. PDF scan chỉ dùng được ở chế độ giữ nguyên giao diện.</p>
   </div>
 
   <div class="card">
@@ -104,8 +133,10 @@ textarea{width:100%;min-height:170px;padding:10px;border-radius:9px;border:1px s
       <div><label>Vị trí ảnh trên trang</label><select id="va"><option value="top">Sát phía trên</option><option value="center">Căn giữa trang</option></select></div>
       <div><label>Chất lượng ảnh</label><select id="q"><option value="1">Gốc (nặng, nét nhất)</option><option value="2">Cân bằng (khuyên dùng)</option><option value="3">Nhỏ gọn (file nhẹ)</option><option value="4">✨ Cải thiện HD (làm nét, cân màu, khử bụi)</option></select></div>
       <div><label>Phóng to ảnh (chỉ khi chọn Cải thiện HD)</label><select id="up"><option value="1">Giữ kích thước, chỉ làm nét</option><option value="2" selected>Phóng to 2×</option><option value="4">Phóng to 4× (chậm, tối đa 6000 px)</option></select></div>
-      <div style="grid-column:1/-1"><label style="display:flex;gap:8px;align-items:flex-start;color:var(--tx);margin:0"><input type="checkbox" id="sm" style="margin-top:4px"><span><b>Giảm dung lượng file</b> (tùy chọn): tự co ảnh vừa đủ độ nét theo khổ giấy (300 / 200 / 120 dpi, 250 dpi ở chế độ HD) và nén thông minh, file thường nhẹ hơn nhiều lần. Bỏ tick để giữ chất lượng tốt nhất.</span></label></div>
-      <div><label>Định dạng xuất</label><select id="ft"><option value="docx">Word (.docx)</option><option value="pdf">PDF (.pdf)</option><option value="pptx">PowerPoint (.pptx)</option><option value="xlsx">Excel (.xlsx)</option><option value="txt">Văn bản (.txt)</option><option value="all">Tất cả: Word + PDF + PowerPoint + Excel + TXT</option></select></div>
+      <div style="grid-column:1/-1"><label style="display:flex;gap:8px;align-items:flex-start;color:var(--tx);margin:0"><input type="checkbox" id="sm" style="margin-top:4px"><span><b>Giảm dung lượng file</b> (tùy chọn): tự co ảnh vừa đủ độ nét theo khổ giấy (300 / 200 / 120 dpi, 250 dpi ở chế độ HD) và nén thông minh; với file cùng định dạng sẽ nén ảnh bên trong nhưng giữ nguyên phông chữ và bố cục. Bỏ tick để giữ chất lượng tốt nhất.</span></label></div>
+      <div><label>Định dạng xuất</label><select id="ft" autocomplete="off"><option value="docx">Word (.docx)</option><option value="pdf">PDF (.pdf)</option><option value="pptx">PowerPoint (.pptx)</option><option value="xlsx">Excel (.xlsx)</option><option value="txt">Văn bản (.txt)</option><option value="jpg">Ảnh JPG (.jpg)</option><option value="png">Ảnh PNG (.png)</option><option value="all">Tất cả: Word + PDF + PowerPoint + Excel + TXT</option></select></div>
+      <div><label>Chế độ giữ định dạng</label><select id="md" autocomplete="off"><option value="v">Giữ nguyên giao diện gốc (khuyên dùng)</option><option value="t">Chỉnh sửa được (trích chữ và bảng)</option></select></div>
+      <div id="ibx" style="display:none"><label>&nbsp;</label><button id="ib" style="width:100%">⚙ Tùy chỉnh ảnh xuất</button></div>
       <div><label>Tên file (không cần đuôi)</label><input type="text" id="fn" value="TaiLieuChuyenDoi"></div>
     </div>
   </div>
@@ -128,6 +159,49 @@ textarea{width:100%;min-height:170px;padding:10px;border-radius:9px;border:1px s
   </div>
 </div>
 
+<div class="ov" id="ovw" role="dialog" aria-modal="true" aria-labelledby="wt" aria-hidden="true"><div class="md keep">
+  <div class="mh" id="wt">🎓 Welcome to Swiftly Convert App</div>
+  <div class="mb" id="wb">
+    <p>Welcome to my website. I am <b>Vũ Huỳnh Gia Bảo</b>, and I am delighted that you have chosen to use my product.</p>
+    <p>Swiftly Convert App is a free, browser-based utility that converts images and documents into one another while preserving their original appearance as faithfully as a web browser permits.</p>
+    <h4>Quick guide</h4>
+    <ol>
+      <li><b>Add your files.</b> Drag and drop images or documents (TXT, DOCX, PDF, PPTX, XLSX, CSV) onto the corresponding drop zones, or click a zone to browse your device.</li>
+      <li><b>Organise them.</b> Reorder, rotate or remove any item; images are sorted alphabetically by default.</li>
+      <li><b>Configure the output.</b> Select the paper size, orientation, margins, image quality and target format. The "Layout mode" option determines whether the original appearance is retained or only the text is extracted for editing.</li>
+      <li><b>Convert to images.</b> Choosing JPG or PNG opens an advanced panel in which you may specify the resolution, dimensions and quality before converting.</li>
+      <li><b>Convert and download.</b> Press "Convert", then use the download buttons that appear.</li>
+      <li><b>Same-format files.</b> If a file already has the chosen format, you will be asked to confirm; confirming copies the original intact, optionally compressed by "Reduce file size".</li>
+      <li><b>Personalise.</b> Use "Switch themes" and the language selector in the upper-right corner.</li>
+    </ol>
+    <h4>Privacy</h4>
+    <p>All processing takes place locally within your browser; none of your files is ever uploaded to a server.</p>
+    <h4>A closing wish</h4>
+    <p>I sincerely wish you a productive, seamless and rewarding experience. May your work flourish, and thank you for visiting.</p>
+  </div>
+  <div class="mf"><button class="pri" id="wc">Close</button></div>
+</div></div>
+<div class="ov" id="ovc" role="alertdialog" aria-modal="true" aria-hidden="true"><div class="md sm">
+  <div class="mh">⚠️ Cảnh báo</div>
+  <div class="mb"><p>Bạn đang tiến hành chuyển đổi file cùng định dạng với file ban đầu bạn có chắc chắn muốn chuyển đổi chứ?</p>
+    <p style="margin-bottom:2px"><b>Tệp bị ảnh hưởng:</b></p><ul id="cl"></ul>
+    <p class="warn">Chọn "Có" để sao chép nguyên bản (và nén nếu bạn đã tick Giảm dung lượng file). Chọn "Không" để xóa các tệp này khỏi danh sách và dừng lại.</p></div>
+  <div class="mf"><button id="cn">Không</button><button class="pri" id="cy">Có</button></div>
+</div></div>
+<div class="ov" id="ovi" role="dialog" aria-modal="true" aria-hidden="true"><div class="md">
+  <div class="mh">🖼️ Chuyển sang ảnh: tùy chỉnh ảnh xuất</div>
+  <div class="mb">
+    <div class="fg">
+      <div><label>Định dạng ảnh</label><select id="ifm" autocomplete="off"><option value="jpg">JPG (.jpg)</option><option value="png">PNG (.png)</option></select></div>
+      <div><label>Độ phân giải (DPI)</label><select id="idp" autocomplete="off"><option value="72">72 DPI (xem trên màn hình)</option><option value="96">96 DPI</option><option value="150">150 DPI</option><option value="200" selected>200 DPI (khuyên dùng)</option><option value="300">300 DPI (in ấn)</option><option value="450">450 DPI</option><option value="600">600 DPI (siêu nét)</option></select></div>
+      <div><label>Chiều rộng tùy chỉnh (px, 0 = theo DPI)</label><input type="number" id="iwd" value="0" min="0" max="12000" step="10"></div>
+      <div><label>Chế độ màu</label><select id="icl" autocomplete="off"><option value="c">Màu</option><option value="g">Đen trắng (thang xám)</option></select></div>
+      <div style="grid-column:1/-1"><label>Chất lượng JPG: <b id="iqv">90</b>%</label><input type="range" id="iqt" min="40" max="100" value="90"></div>
+    </div>
+    <div class="inf"><h4>Thông tin ảnh xuất</h4><div id="ii"></div></div>
+  </div>
+  <div class="mf"><button id="ix">Hủy</button><button class="pri" id="ig">Chuyển đổi ngay</button></div>
+</div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
@@ -153,7 +227,7 @@ function render(){
   const ls=$('ls');ls.innerHTML='';
   items.forEach((it,i)=>{
     const d=document.createElement('div');d.className='it';
-    d.innerHTML='<div class="th"><img alt=""></div><div class="mt"><div class="nm"></div><div class="d"></div></div><div class="ac"><button data-a="u" title="Lên">◀</button><button data-a="d" title="Xuống">▶</button><button data-a="r" title="Xoay 90°">⟳</button><button data-a="x" title="Xóa">✕</button></div>';
+    d.innerHTML='<div class="th"><img alt=""></div><div class="mt"><div class="nm"></div><div class="d"></div></div><div class="ac"><button data-a="u" title="'+t('Lên')+'">◀</button><button data-a="d" title="'+t('Xuống')+'">▶</button><button data-a="r" title="'+t('Xoay 90°')+'">⟳</button><button data-a="x" title="'+t('Xóa')+'">✕</button></div>';
     const im=d.querySelector('img');im.src=it.url;im.style.transform='rotate('+it.rot+'deg)';
     if(it.rot%180)im.style.maxWidth=im.style.maxHeight='150px';
     d.querySelector('.nm').innerHTML='<span class="n">'+(i+1)+'</span>';
@@ -162,7 +236,7 @@ function render(){
     d.querySelectorAll('button').forEach(b=>b.onclick=()=>act(it.id,b.dataset.a));
     ls.appendChild(d);
   });
-  $('cnt').textContent=items.length+' ảnh';
+  $('cnt').textContent=t('{0} ảnh',items.length);
   $('em').style.display=items.length?'none':'block';
   upd();
 }
@@ -249,7 +323,7 @@ async function needPptx(){
   for(const u of ['https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js','https://cdnjs.cloudflare.com/ajax/libs/pptxgenjs/3.12.0/pptxgen.bundle.js','https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.min.js']){
     try{await loadJs(u);if(window.PptxGenJS)return}catch(e){}
   }
-  throw new Error('Không tải được thư viện PowerPoint từ bất kỳ nguồn nào. Hãy kiểm tra mạng / tắt trình chặn quảng cáo rồi thử lại.');
+  throw new Error(t('Không tải được thư viện PowerPoint từ bất kỳ nguồn nào. Hãy kiểm tra mạng / tắt trình chặn quảng cáo rồi thử lại.'));
 }
 async function makePptx(bl,pages,base){
   await needPptx();
@@ -257,7 +331,7 @@ async function makePptx(bl,pages,base){
   const sl=[];let cur=null;
   for(const b of bl){if(b.k==='pb'){cur=null}else if(b.k==='h'){cur={t:b.s,it:[]};sl.push(cur)}else{if(!cur){cur={t:'',it:[]};sl.push(cur)}cur.it.push(b)}}
   const out=[];
-  sl.forEach(s=>{if(s.it.length<=6)out.push(s);else for(let i=0;i<s.it.length;i+=6)out.push({t:(s.t||base)+(i?' (tiếp)':''),it:s.it.slice(i,i+6)})});
+  sl.forEach(s=>{if(s.it.length<=6)out.push(s);else for(let i=0;i<s.it.length;i+=6)out.push({t:(s.t||base)+(i?t(' (tiếp)'):''),it:s.it.slice(i,i+6)})});
   out.forEach(s=>{const sd=p.addSlide();sd.background={color:'FFFFFF'};
     sd.addShape(p.ShapeType.rect,{x:0,y:0,w:13.33,h:1.15,fill:{color:'0B2545'},line:{color:'0B2545'}});
     sd.addShape(p.ShapeType.rect,{x:0,y:1.15,w:13.33,h:0.06,fill:{color:'E09F3E'},line:{color:'E09F3E'}});
@@ -266,8 +340,8 @@ async function makePptx(bl,pages,base){
   for(const g of pages){const sd=p.addSlide();sd.background={color:'F3F4F6'};const ar=g.w/g.h;let w=12.7,h=w/ar;if(h>6.9){h=6.9;w=h*ar}
     sd.addImage({data:await du(g.buf),x:(13.33-w)/2,y:(7.5-h)/2,w,h})}
   return p.write({outputType:'blob'})}
-const FM={docx:['docx'],pdf:['pdf'],pptx:['pptx'],xlsx:['xlsx'],txt:['txt'],all:['docx','pdf','pptx','xlsx','txt']};
-const allBl=()=>docs.flatMap((d,i)=>i?[{k:'pb'},...d.bl]:d.bl);
+const FM={docx:['docx'],pdf:['pdf'],pptx:['pptx'],xlsx:['xlsx'],txt:['txt'],jpg:['jpg'],png:['png'],all:['docx','pdf','pptx','xlsx','txt']};
+const allBl=(L=docs)=>L.flatMap((d,i)=>i?[{k:'pb'},...d.bl]:d.bl);
 const flat=bl=>bl.flatMap(b=>b.k==='tb'?b.rows.map(r=>({k:'p',s:r.join(' | ')})):[b]);
 const tblXml=rows=>{const n=Math.max(1,...rows.map(r=>r.length));
   return '<w:tbl><w:tblPr><w:tblW w:w="5000" w:type="pct"/><w:tblBorders>'+['top','left','bottom','right','insideH','insideV'].map(s=>'<w:'+s+' w:val="single" w:sz="4" w:space="0" w:color="999999"/>').join('')+'</w:tblBorders></w:tblPr><w:tblGrid>'+'<w:gridCol w:w="'+Math.floor(9000/n)+'"/>'.repeat(n)+'</w:tblGrid>'+
@@ -275,14 +349,14 @@ const tblXml=rows=>{const n=Math.max(1,...rows.map(r=>r.length));
 const docxBody=bl=>{let o='',run=[];const fl=()=>{if(run.length)o+=txDocx(run);run=[]};
   bl.forEach(b=>{if(b.k==='tb'){fl();o+=tblXml(b.rows)}else run.push(b)});fl();return o};
 const makeTxt=bl=>new Blob(['\ufeff'+bl.map(b=>b.k==='pb'?'\n----------------------------------------\n':b.k==='h'?'\n'+b.s+'\n':b.k==='b'?'• '+b.s:b.k==='tb'?b.rows.map(r=>r.join('\t')).join('\n'):b.s).join('\n')],{type:'text/plain;charset=utf-8'});
-async function need(chk,urls,msg){if(chk())return;for(const u of urls){try{await loadJs(u);if(chk())return}catch(e){}}throw new Error(msg)}
+async function need(chk,urls,msg){if(chk())return;for(const u of urls){try{await loadJs(u);if(chk())return}catch(e){}}throw new Error(t(msg))}
 const needX=()=>need(()=>window.XLSX,['https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js','https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'],'Không tải được thư viện Excel. Kiểm tra mạng hoặc tắt trình chặn quảng cáo rồi thử lại.');
 async function needPdf(){
   await need(()=>window.pdfjsLib,['https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js','https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js'],'Không tải được bộ đọc PDF. Kiểm tra mạng rồi thử lại.');
   if(pdfjsLib.GlobalWorkerOptions.workerSrc)return;
   for(const u of ['https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js','https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js']){
     try{const t=await (await fetch(u)).text();pdfjsLib.GlobalWorkerOptions.workerSrc=URL.createObjectURL(new Blob([t],{type:'text/javascript'}));return}catch(e){}}
-  throw new Error('Không tải được bộ đọc PDF.')}
+  throw new Error(t('Không tải được bộ đọc PDF.'))}
 const cln=s=>String(s).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'').replace(/\s+/g,' ').trim();
 async function readX(f,e){await needX();
   const wb=e==='csv'?XLSX.read(await f.text(),{type:'string'}):XLSX.read(await f.arrayBuffer(),{type:'array'}),o=[];
@@ -290,7 +364,7 @@ async function readX(f,e){await needX();
     if(!r.length)return;if(o.length)o.push({k:'pb'});if(e!=='csv')o.push({k:'h',s:n});o.push({k:'tb',rows:r})});
   return o}
 async function readDocx(f){
-  const z=await JSZip.loadAsync(await f.arrayBuffer()),xf=z.file('word/document.xml');if(!xf)throw new Error('không phải file .docx hợp lệ');
+  const z=await JSZip.loadAsync(await f.arrayBuffer()),xf=z.file('word/document.xml');if(!xf)throw new Error(t('không phải file .docx hợp lệ'));
   const d=new DOMParser().parseFromString(await xf.async('string'),'application/xml'),o=[],body=d.getElementsByTagName('w:body')[0],
   tx=p=>cln([...p.getElementsByTagName('w:t')].map(t=>t.textContent).join(''));
   [...body.children].forEach(n=>{
@@ -305,7 +379,7 @@ async function readDocx(f){
 async function readPptx(f){
   const z=await JSZip.loadAsync(await f.arrayBuffer()),o=[],
   ns=Object.keys(z.files).filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).sort((a,b)=>a.match(/\d+/)[0]-b.match(/\d+/)[0]);
-  if(!ns.length)throw new Error('không phải file .pptx hợp lệ');
+  if(!ns.length)throw new Error(t('không phải file .pptx hợp lệ'));
   for(const n of ns){const d=new DOMParser().parseFromString(await z.file(n).async('string'),'application/xml');if(o.length)o.push({k:'pb'});
     for(const sp of d.getElementsByTagName('p:sp')){const ph=sp.getElementsByTagName('p:ph')[0],ty=ph?ph.getAttribute('type')||'body':'x';
       if(/^(sldNum|ftr|dt)$/.test(ty))continue;
@@ -315,7 +389,7 @@ async function readPptx(f){
 async function readPdf(f){
   await needPdf();const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise,o=[];
   for(let n=1;n<=pdf.numPages;n++){
-    $('st').textContent='Đang đọc '+f.name+' (trang '+n+'/'+pdf.numPages+')…';
+    $('st').textContent=t('Đang đọc {0} (trang {1}/{2})…',f.name,n,pdf.numPages);
     const tc=await (await pdf.getPage(n)).getTextContent(),its=tc.items.filter(t=>t.str.trim()).map(t=>({s:t.str,x:t.transform[4],y:t.transform[5],h:Math.abs(t.transform[3])||t.height||10,w:t.width||0}));
     its.sort((a,b)=>b.y-a.y);const ln=[];
     its.forEach(t=>{const l=ln[ln.length-1];if(l&&Math.abs(l.y-t.y)<Math.max(2,l.h*.5)){l.t.push(t);l.h=Math.max(l.h,t.h)}else ln.push({y:t.y,h:t.h,t:[t]})});
@@ -335,19 +409,19 @@ async function readDoc(f,e){
 async function addDocs(files){
   const fs=[...files],im=fs.filter(f=>f.type.startsWith('image/')),errs=[];if(im.length)add(im);
   for(const f of fs){const e=(f.name.split('.').pop()||'').toLowerCase();if(!['txt','md','csv','docx','pdf','pptx','xlsx','xls'].includes(e))continue;
-    try{$('st').textContent='Đang đọc '+f.name+'…';const bl=await readDoc(f,e);
-      if(!bl.length)throw new Error('không tìm thấy nội dung chữ (có thể là PDF scan hoặc file trống)');
-      docs.push({id:++did,name:f.name,e,bl})}catch(x){errs.push(f.name+': '+x.message)}}
+    try{$('st').textContent=t('Đang đọc {0}…',f.name);const bl=await readDoc(f,e);
+      if(!bl.length&&e!=='pdf')throw new Error(t('không tìm thấy nội dung chữ (có thể là file trống)'));if(!bl.length)errs.push(t('{0}: PDF không có lớp chữ (bản scan), chỉ dùng được chế độ giữ nguyên giao diện.',f.name));
+      docs.push({id:++did,name:f.name,e,bl,file:f})}catch(x){errs.push(f.name+': '+x.message)}}
   $('st').textContent=errs.join(' · ');renderDocs()}
 function renderDocs(){
   const L=$('dls');L.innerHTML='';
   docs.forEach((d,i)=>{const r=document.createElement('div');r.className='dr';
-    r.innerHTML='<span class="n">'+(i+1)+'</span><span class="nm"></span><span class="d"></span><button data-a="u" title="Lên">▲</button><button data-a="d" title="Xuống">▼</button><button data-a="x" title="Xóa">✕</button>';
-    r.querySelector('.nm').textContent=d.name;r.querySelector('.d').textContent=d.e.toUpperCase()+' · '+d.bl.length+' khối';
+    r.innerHTML='<span class="n">'+(i+1)+'</span><span class="nm"></span><span class="d"></span><button data-a="u" title="'+t('Lên')+'">▲</button><button data-a="d" title="'+t('Xuống')+'">▼</button><button data-a="x" title="'+t('Xóa')+'">✕</button>';
+    r.querySelector('.nm').textContent=d.name;r.querySelector('.d').textContent=d.e.toUpperCase()+' · '+t('{0} khối',d.bl.length);
     r.querySelectorAll('button').forEach(b=>b.onclick=()=>{const j=docs.findIndex(x=>x.id===d.id),a=b.dataset.a;
       if(a==='x')docs.splice(j,1);else{const k=a==='u'?j-1:j+1;if(k>=0&&k<docs.length)[docs[j],docs[k]]=[docs[k],docs[j]]}renderDocs()});
     L.appendChild(r)});
-  $('dcnt').textContent='📚 Tài liệu ('+docs.length+')';upd()}
+  $('dcnt').textContent=t('📚 Tài liệu ({0})',docs.length);upd()}
 const dz2=$('dz2'),fd=$('fd');
 dz2.onclick=()=>fd.click();fd.onchange=()=>{addDocs(fd.files);fd.value=''};
 ['dragenter','dragover'].forEach(e=>dz2.addEventListener(e,ev=>{ev.preventDefault();dz2.classList.add('on')}));
@@ -357,12 +431,339 @@ $('dc').onclick=()=>{docs=[];renderDocs()};
 async function makeXlsx(bl){
   await needX();const wb=XLSX.utils.book_new(),tx=[],tb=[],used=new Set();let last='';
   bl.forEach(b=>{if(b.k==='tb')tb.push([last,b.rows]);else if(b.k!=='pb'){tx.push([b.k==='b'?'• '+b.s:b.s]);if(b.k==='h')last=b.s}});
-  const nm=s=>{let n=cln(s||'Bảng').replace(/[\\\/?*\[\]:]/g,' ').slice(0,28)||'Bảng',k=n,i=1;while(used.has(k.toLowerCase()))k=n+' '+(++i);used.add(k.toLowerCase());return k};
+  const nm=s=>{let n=cln(s||t('Bảng')).replace(/[\\\/?*\[\]:]/g,' ').slice(0,28)||'Bảng',k=n,i=1;while(used.has(k.toLowerCase()))k=n+' '+(++i);used.add(k.toLowerCase());return k};
   tb.forEach(([n,r])=>XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(r.map(row=>row.map(c=>/^-?(0|[1-9]\d*)(\.\d+)?$/.test(c)?+c:c))),nm(n)));
-  if(!tb.length||bl.some(b=>b.k!=='tb'&&b.k!=='pb'&&b.k!=='h')){const ws=XLSX.utils.aoa_to_sheet(tx.length?tx:[['']]);ws['!cols']=[{wch:100}];XLSX.utils.book_append_sheet(wb,ws,nm('Nội dung'))}
+  if(!tb.length||bl.some(b=>b.k!=='tb'&&b.k!=='pb'&&b.k!=='h')){const ws=XLSX.utils.aoa_to_sheet(tx.length?tx:[['']]);ws['!cols']=[{wch:100}];XLSX.utils.book_append_sheet(wb,ws,nm(t('Nội dung')))}
   return new Blob([XLSX.write(wb,{bookType:'xlsx',type:'array'})],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})}
+// ======================= i18n =======================
+let lang=(navigator.language||'vi').toLowerCase().startsWith('vi')?'vi':'en';
+const EN={
+'Chuyển đổi qua lại giữa ảnh và tài liệu (TXT, Word, PDF, PowerPoint, Excel), xuất ra Word, PDF, PowerPoint, Excel, TXT, JPG hoặc PNG và giữ nguyên giao diện gốc. Xử lý ngay trên trình duyệt, không tải dữ liệu lên máy chủ.':'Convert between images and documents (TXT, Word, PDF, PowerPoint, Excel) and export to Word, PDF, PowerPoint, Excel, TXT, JPG or PNG while preserving the original appearance. Everything is processed in your browser; nothing is uploaded to a server.',
+'Mặc định':'Default','Giao diện tối':'Dark','Giao diện nóng':'Hot themes','Giao diện lạnh':'Cool themes','🎨 Đổi giao diện':'🎨 Switch themes',
+'Kéo thả ảnh vào đây hoặc bấm để chọn':'Drag and drop images here, or click to browse',
+'JPG, PNG, WebP, BMP, GIF… chọn được nhiều ảnh cùng lúc':'JPG, PNG, WebP, BMP, GIF… multiple images at once',
+'📚 Tài liệu (0)':'📚 Documents (0)','📚 Tài liệu ({0})':'📚 Documents ({0})','Xóa hết':'Clear all',
+'Kéo thả tài liệu vào đây hoặc bấm để chọn':'Drag and drop documents here, or click to browse',
+'TXT, DOCX, PDF, PPTX, XLSX, CSV · chọn nhiều file cùng lúc':'TXT, DOCX, PDF, PPTX, XLSX, CSV · multiple files at once',
+'Ở chế độ "Giữ nguyên giao diện", tài liệu được dựng lại từng trang với phông chữ, màu sắc, bảng và hình ảnh rồi mới xuất; ở chế độ "Chỉnh sửa được", trang chỉ trích chữ, tiêu đề và bảng. Chuyển sang đúng định dạng gốc sẽ sao chép nguyên bản file (có thể nén). Excel và TXT luôn chỉ xuất chữ và bảng. PDF scan chỉ dùng được ở chế độ giữ nguyên giao diện.':'In "Preserve original layout" mode, each page is re-rendered with its fonts, colours, tables and images before export; in "Editable" mode, only text, headings and tables are extracted. Exporting to the original format copies the file intact (optionally compressed). Excel and TXT exports always contain text and tables only. Scanned PDFs work only in layout-preserving mode.',
+'Khổ giấy':'Paper size','Hướng trang':'Orientation','Tự động theo ảnh':'Automatic (follow the content)','Luôn dọc':'Always portrait','Luôn ngang':'Always landscape',
+'Lề trang (mm, 0 = ảnh full trang)':'Margins (mm, 0 = full-bleed)','Vị trí ảnh trên trang':'Position on the page','Sát phía trên':'Top','Căn giữa trang':'Centred',
+'Chất lượng ảnh':'Image quality','Gốc (nặng, nét nhất)':'Original (largest, sharpest)','Cân bằng (khuyên dùng)':'Balanced (recommended)','Nhỏ gọn (file nhẹ)':'Compact (light file)',
+'✨ Cải thiện HD (làm nét, cân màu, khử bụi)':'✨ HD enhancement (sharpen, colour balance, dust removal)',
+'Phóng to ảnh (chỉ khi chọn Cải thiện HD)':'Upscaling (only with HD enhancement)','Giữ kích thước, chỉ làm nét':'Keep size, sharpen only','Phóng to 2×':'Upscale 2×','Phóng to 4× (chậm, tối đa 6000 px)':'Upscale 4× (slow, up to 6000 px)',
+'Giảm dung lượng file':'Reduce file size',
+'(tùy chọn): tự co ảnh vừa đủ độ nét theo khổ giấy (300 / 200 / 120 dpi, 250 dpi ở chế độ HD) và nén thông minh; với file cùng định dạng sẽ nén ảnh bên trong nhưng giữ nguyên phông chữ và bố cục. Bỏ tick để giữ chất lượng tốt nhất.':'(optional): resamples images to the sharpness the paper size requires (300 / 200 / 120 dpi; 250 dpi in HD mode) and compresses intelligently; for same-format files it recompresses the embedded images while keeping fonts and layout. Untick for maximum quality.',
+'Định dạng xuất':'Export format','Văn bản (.txt)':'Plain text (.txt)','Ảnh JPG (.jpg)':'JPG image (.jpg)','Ảnh PNG (.png)':'PNG image (.png)','Tất cả: Word + PDF + PowerPoint + Excel + TXT':'All: Word + PDF + PowerPoint + Excel + TXT',
+'Chế độ giữ định dạng':'Layout mode','Giữ nguyên giao diện gốc (khuyên dùng)':'Preserve original layout (recommended)','Chỉnh sửa được (trích chữ và bảng)':'Editable (extract text and tables)',
+'⚙ Tùy chỉnh ảnh xuất':'⚙ Image export settings','Tên file (không cần đuôi)':'File name (no extension)',
+'0 ảnh':'0 images','{0} ảnh':'{0} images','Tự xếp A–Z khi thêm':'Auto-sort A–Z when adding','Sắp xếp A–Z':'Sort A–Z','Đảo ngược':'Reverse','Chưa có ảnh nào.':'No images yet.','Chuyển đổi':'Convert',
+'Lên':'Move up','Xuống':'Move down','Xoay 90°':'Rotate 90°','Xóa':'Remove','{0} khối':'{0} blocks',
+'⚠️ Cảnh báo':'⚠️ Warning',
+'Bạn đang tiến hành chuyển đổi file cùng định dạng với file ban đầu bạn có chắc chắn muốn chuyển đổi chứ?':'You are about to convert a file to the same format as the original. Are you sure you want to proceed?',
+'Tệp bị ảnh hưởng:':'Affected files:','Có':'Yes','Không':'No',
+'Chọn "Có" để sao chép nguyên bản (và nén nếu bạn đã tick Giảm dung lượng file). Chọn "Không" để xóa các tệp này khỏi danh sách và dừng lại.':'Choose "Yes" to copy the original intact (compressed if "Reduce file size" is ticked). Choose "No" to remove these files from the list and stop.',
+'🖼️ Chuyển sang ảnh: tùy chỉnh ảnh xuất':'🖼️ Convert to image: export settings','Định dạng ảnh':'Image format','Độ phân giải (DPI)':'Resolution (DPI)',
+'72 DPI (xem trên màn hình)':'72 DPI (screen viewing)','200 DPI (khuyên dùng)':'200 DPI (recommended)','300 DPI (in ấn)':'300 DPI (print)','600 DPI (siêu nét)':'600 DPI (ultra-sharp)',
+'Chiều rộng tùy chỉnh (px, 0 = theo DPI)':'Custom width (px, 0 = from DPI)','Chế độ màu':'Colour mode','Màu':'Colour','Đen trắng (thang xám)':'Greyscale','Chất lượng JPG:':'JPG quality:',
+'Thông tin ảnh xuất':'Output image information','Hủy':'Cancel','Chuyển đổi ngay':'Convert now',
+'Nguồn mẫu':'Sample source','Số tệp nguồn':'Source files','Kích thước trang':'Page size','Kích thước ảnh':'Image size','Megapixel':'Megapixels','Độ phân giải':'Resolution','Định dạng':'Format','Chế độ màu ':'Colour mode ','Dung lượng ước tính (mỗi ảnh)':'Estimated size (per image)',
+'Trang A4 mặc định':'Default A4 page','theo chiều rộng tùy chỉnh':'from the custom width','Nén không mất dữ liệu':'Lossless compression','Chất lượng {0}%':'Quality {0}%','Màu':'Colour',
+'Hãy thêm ảnh hoặc tài liệu trước khi chuyển đổi.':'Please add images or documents before converting.',
+'Đang xử lý…':'Processing…','Đã xóa các tệp cùng định dạng khỏi danh sách và không thực hiện chuyển đổi.':'The same-format files were removed from the list and no conversion was performed.',
+'Đang sao chép {0}…':'Copying {0}…','Đang nén {0}…':'Compressing {0}…','Không có nội dung để chuyển đổi.':'There is nothing to convert.','Có lỗi xảy ra: ':'An error occurred: ',
+'Đang dựng trang {0}…':'Rendering the pages of {0}…','Đang đọc {0}…':'Reading {0}…','Đang đọc {0} (trang {1}/{2})…':'Reading {0} (page {1}/{2})…',
+'Đang dàn trang văn bản…':'Laying out the text…','Đang cải thiện ảnh {0}/{1} (có thể mất vài giây)…':'Enhancing image {0}/{1} (this may take a few seconds)…','Đang xử lý ảnh {0}/{1}…':'Processing image {0}/{1}…',
+'Đang đóng gói file Word…':'Packaging the Word file…','Đang tạo file PDF…':'Creating the PDF file…','Đang tạo file PowerPoint…':'Creating the PowerPoint file…','Đang tạo file Excel…':'Creating the Excel file…','Đang xuất ảnh…':'Exporting images…','Đang xuất ảnh {0}/{1}…':'Exporting image {0}/{1}…','Đang đóng gói ảnh (.zip)…':'Packaging the images (.zip)…',
+'⬇ Tải {0} ({1} MB)':'⬇ Download {0} ({1} MB)','Hoàn tất {0} file. Bấm nút bên dưới để tải về máy.':'Done: {0} file(s). Press a button below to download.',
+' File khá nặng, hãy tick "Giảm dung lượng file" rồi chuyển đổi lại để nhẹ hơn.':' The output is fairly large; tick "Reduce file size" and convert again for a lighter file.',
+'Đã tải {0} về máy.':'{0} has been downloaded.','Bạn đã hủy tải file, bấm lại nút để tải.':'Download cancelled; press the button again to download.','Không tải được: ':'Could not download: ',
+'Không tải được thư viện PowerPoint từ bất kỳ nguồn nào. Hãy kiểm tra mạng / tắt trình chặn quảng cáo rồi thử lại.':'The PowerPoint library could not be loaded from any source. Check your connection or disable ad blockers, then try again.',
+'Không tải được thư viện Excel. Kiểm tra mạng hoặc tắt trình chặn quảng cáo rồi thử lại.':'The Excel library could not be loaded. Check your connection or disable ad blockers, then try again.',
+'Không tải được bộ đọc PDF. Kiểm tra mạng rồi thử lại.':'The PDF reader could not be loaded. Check your connection and try again.','Không tải được bộ đọc PDF.':'The PDF reader could not be loaded.',
+'Không tải được thư viện nén PDF. Kiểm tra mạng rồi thử lại.':'The PDF compression library could not be loaded. Check your connection and try again.',
+'Không tải được thư viện PDF, hãy kiểm tra mạng rồi thử lại':'The PDF library could not be loaded; check your connection and try again',
+'không phải file .docx hợp lệ':'not a valid .docx file','không phải file .pptx hợp lệ':'not a valid .pptx file',
+'không tìm thấy nội dung chữ (có thể là file trống)':'no text content was found (the file may be empty)',
+'{0}: PDF không có lớp chữ (bản scan), chỉ dùng được chế độ giữ nguyên giao diện.':'{0}: this PDF has no text layer (a scan); only the layout-preserving mode can be used.',
+'Excel và TXT chỉ xuất được chữ. Hãy thêm tài liệu, hoặc chọn Word / PDF / PowerPoint để xuất ảnh.':'Excel and TXT exports contain text only. Add a document, or choose Word / PDF / PowerPoint to export images.',
+'Bảng':'Table','Nội dung':'Content',' (tiếp)':' (cont.)','trang':'page'
+};
+const t=(s,...a)=>{let o=lang==='en'&&EN[s]!=null?EN[s]:s;a.forEach((v,i)=>{o=o.split('{'+i+'}').join(v)});return o};
+function applyLang(){
+  document.documentElement.lang=lang;
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>(!n.nodeValue.trim()||n.parentElement.closest('script,style,.keep'))?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}),ns=[];
+  while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(n=>{if(n._o===undefined)n._o=n.nodeValue;const k=n._o.trim();n.nodeValue=n._o.replace(k,()=>lang==='en'&&EN[k]!=null?EN[k]:k)});
+  document.querySelectorAll('.dd').forEach(d=>d._r&&d._r());
+}
+const ddr=s=>{const d=s.nextElementSibling;d&&d._r&&d._r()};
+$('lg').value=lang;
+$('lg').addEventListener('change',()=>{lang=$('lg').value;applyLang();render();renderDocs();updInfo()});
+
+// ======================= modals =======================
+const openM=id=>{const o=$(id);o.classList.add('show');o.setAttribute('aria-hidden','false');setTimeout(()=>{const b=o.querySelector('button.pri');b&&b.focus()},80)};
+const closeM=id=>{const o=$(id);o.classList.remove('show');o.setAttribute('aria-hidden','true')};
+document.addEventListener('keydown',e=>{if(e.key!=='Escape'||document.querySelector('.dd.open'))return;
+  if($('ovi').classList.contains('show'))$('ix').click();else if($('ovw').classList.contains('show'))$('wc').click()});
+const confirmSame=names=>new Promise(res=>{
+  const ul=$('cl');ul.innerHTML='';names.forEach(n=>{const li=document.createElement('li');li.textContent=n;ul.appendChild(li)});
+  const done=v=>{closeM('ovc');setTimeout(()=>{$('cy').onclick=$('cn').onclick=null},350);res(v)};
+  $('cy').onclick=()=>done(true);$('cn').onclick=()=>done(false);openM('ovc')});
+
+// ======================= helpers =======================
+const tick=()=>new Promise(r=>setTimeout(r,16));
+const sameFmt=(e,f)=>e===f||(f==='txt'&&e==='md');
+const mkc=(w,h)=>{const c=document.createElement('canvas');c.width=Math.max(1,Math.round(w));c.height=Math.max(1,Math.round(h));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);return[c,x]};
+const toBl=(c,m,q)=>new Promise(r=>c.toBlob(r,m,q));
+const FF=f=>'"'+(f||'Calibri')+'",Calibri,Carlito,Arial,"Helvetica Neue",sans-serif';
+const chd=(n,tg)=>n?[...n.children].find(c=>c.nodeName===tg)||null:null,AT=(n,a)=>n?n.getAttribute(a):null,g1=(n,tg)=>n?n.getElementsByTagName(tg)[0]||null:null;
+const xmlOf=async(z,n)=>{const o=z.file(n);return o?new DOMParser().parseFromString(await o.async('string'),'application/xml'):null};
+
+// ---- bố cục chữ dùng chung (Word + PowerPoint) ----
+function wrapRuns(x,runs,W,ind,al){
+  const lines=[];let L={it:[],w:0,h:0,s:0};
+  const push=last=>{L.last=last;L.al=al;lines.push(L);L={it:[],w:0,h:0,s:0}};
+  for(const r of runs){
+    if(r.br){push(true);continue}
+    const tk=r.img?[{img:r.img,w:r.w,h:r.h,s:r.h}]:String(r.t).split(/(\s+)/).filter(s=>s!=='').map(s=>({t:s,f:r.f,s:r.s,c:r.c,u:r.u,sp:/^\s+$/.test(s)}));
+    for(const k of tk){
+      if(!k.img){x.font=k.f;k.w=x.measureText(k.t).width;k.h=k.s*1.2}
+      const lim=W-(lines.length?0:ind);
+      if(!k.sp&&L.w+k.w>lim&&L.it.some(i=>!i.sp)){while(L.it.length&&L.it[L.it.length-1].sp){L.w-=L.it.pop().w}push(false)}
+      if(k.sp&&!L.it.length)continue;
+      L.it.push(k);L.w+=k.w;L.h=Math.max(L.h,k.h);L.s=Math.max(L.s,k.s)}}
+  push(true);return lines}
+function drawLine(x,L,X0,y,W,off,lh){
+  const sp=L.it.filter(k=>k.sp).length,av=W-off;let sx=X0+off,ex=0;
+  if(L.al==='ctr'||L.al==='center')sx+=(av-L.w)/2;else if(L.al==='r'||L.al==='right'||L.al==='end')sx+=av-L.w;else if((L.al==='both'||L.al==='just')&&!L.last&&sp)ex=(av-L.w)/sp;
+  const base=y+(lh-L.h)/2+L.s*.92;let cx=sx;x.textBaseline='alphabetic';
+  L.it.forEach(k=>{if(k.img)x.drawImage(k.img,cx,base-k.h,k.w,k.h);else{x.font=k.f;x.fillStyle=k.c||'#000';x.fillText(k.t,cx,base);if(k.u)x.fillRect(cx,base+k.s*.1,k.w,Math.max(1,k.s*.06))}cx+=k.w+(k.sp?ex:0)})}
+
+// ======================= bộ dựng trang: DOCX =======================
+async function renderDocx(f,dpi){
+  const z=await JSZip.loadAsync(await f.arrayBuffer()),K=dpi/72,tw=v=>v/20*K,em=v=>v/12700*K;
+  const doc=await xmlOf(z,'word/document.xml'),sty=await xmlOf(z,'word/styles.xml'),num=await xmlOf(z,'word/numbering.xml'),rel=await xmlOf(z,'word/_rels/document.xml.rels');
+  if(!doc)throw new Error(t('không phải file .docx hợp lệ'));
+  const A=AT,ch=chd,on=n=>n&&!['0','false','none'].includes(A(n,'w:val'));
+  const rp=n=>{const o={};if(!n)return o;let g=ch(n,'w:sz');if(g)o.sz=+A(g,'w:val')/2;if(g=ch(n,'w:b'))o.b=on(g);if(g=ch(n,'w:i'))o.i=on(g);if(g=ch(n,'w:u'))o.u=on(g);
+    if((g=ch(n,'w:color'))&&A(g,'w:val')!=='auto')o.c='#'+A(g,'w:val');if(g=ch(n,'w:rFonts'))o.f=A(g,'w:ascii')||A(g,'w:hAnsi')||undefined;if(g=ch(n,'w:caps'))o.caps=on(g);return o};
+  const pp=n=>{const o={};if(!n)return o;let g=ch(n,'w:jc');if(g)o.jc=A(g,'w:val');
+    if(g=ch(n,'w:spacing')){if(A(g,'w:before')!=null)o.bf=+A(g,'w:before');if(A(g,'w:after')!=null)o.af=+A(g,'w:after');if(A(g,'w:line')!=null){o.ln=+A(g,'w:line');o.lr=A(g,'w:lineRule')||'auto'}}
+    if(g=ch(n,'w:ind'))['left','start','firstLine','hanging'].forEach(a=>{if(A(g,'w:'+a)!=null)o[a==='start'?'left':a]=+A(g,'w:'+a)});
+    if(g=ch(n,'w:numPr'))o.num={id:A(ch(g,'w:numId'),'w:val'),lv:+(A(ch(g,'w:ilvl'),'w:val')||0)};if(ch(n,'w:pageBreakBefore'))o.pbb=true;return o};
+  const S={};let defId=null;if(sty)[...sty.getElementsByTagName('w:style')].forEach(s=>{const id=A(s,'w:styleId');S[id]={id,b:A(ch(s,'w:basedOn'),'w:val'),r:ch(s,'w:rPr'),p:ch(s,'w:pPr'),ty:A(s,'w:type')};if(A(s,'w:type')==='paragraph'&&A(s,'w:default')==='1')defId=id});
+  const chain=id=>{const a=[];let s=S[id],n=0;while(s&&n++<12){a.unshift(s);s=S[s.b]}return a};
+  const dr=sty&&g1(sty,'w:docDefaults'),ddR=rp(ch(ch(dr,'w:rPrDefault'),'w:rPr')),ddP=pp(ch(ch(dr,'w:pPrDefault'),'w:pPr'));
+  const rm={};if(rel)[...rel.getElementsByTagName('Relationship')].forEach(r=>rm[A(r,'Id')]=A(r,'Target'));
+  const IM={};for(const b of doc.getElementsByTagName('a:blip')){const id=A(b,'r:embed');if(id&&!IM[id]&&rm[id]){const fl=z.file('word/'+rm[id].replace(/^\/?(word\/)?/,''));if(fl)try{IM[id]=await createImageBitmap(await fl.async('blob'))}catch(e){}}}
+  const nd=(id,lv)=>{if(!num)return null;const n=[...num.getElementsByTagName('w:num')].find(e=>A(e,'w:numId')===id);if(!n)return null;const an=A(ch(n,'w:abstractNumId'),'w:val'),a=[...num.getElementsByTagName('w:abstractNum')].find(e=>A(e,'w:abstractNumId')===an);if(!a)return null;const l=[...a.getElementsByTagName('w:lvl')].find(e=>+A(e,'w:ilvl')===lv);if(!l)return null;const q=pp(ch(l,'w:pPr'));return{fmt:A(ch(l,'w:numFmt'),'w:val'),txt:A(ch(l,'w:lvlText'),'w:val')||'',left:q.left,hang:q.hanging}};
+  const fmtN=(n,f)=>f==='lowerLetter'?String.fromCharCode(96+(n-1)%26+1):f==='upperLetter'?String.fromCharCode(64+(n-1)%26+1):f==='lowerRoman'||f==='upperRoman'?(()=>{let r='',v=[[10,'x'],[9,'ix'],[5,'v'],[4,'iv'],[1,'i']];v.forEach(([a,b])=>{while(n>=a){r+=b;n-=a}});return f==='upperRoman'?r.toUpperCase():r})():String(n);
+  const CT={};
+  const body=g1(doc,'w:body'),sc=ch(body,'w:sectPr'),pz=ch(sc,'w:pgSz'),pm=ch(sc,'w:pgMar');
+  const PWt=+(A(pz,'w:w')||11906),PHt=+(A(pz,'w:h')||16838),M={t:+(A(pm,'w:top')||1440),b:+(A(pm,'w:bottom')||1440),l:+(A(pm,'w:left')||1440),r:+(A(pm,'w:right')||1440)};
+  const PWp=tw(PWt),PHp=tw(PHt),LM=tw(M.l),TM=tw(M.t),BM=PHp-tw(M.b),CW=PWp-tw(M.l)-tw(M.r),out=[];let cv,cx,y;
+  const np=()=>{[cv,cx]=mkc(PWp,PHp);cv._mm=[PWt/1440*25.4,PHt/1440*25.4];out.push(cv);y=TM};np();
+  const runsOf=(p,base)=>{const o=[];const walk=n=>{for(const c of n.children){
+    if(c.nodeName==='w:r'){const rs=ch(c,'w:rPr'),pr=Object.assign({},base,...chain(A(ch(rs,'w:rStyle'),'w:val')).map(s=>rp(s.r)),rp(rs));
+      for(const e of c.children){if(e.nodeName==='w:t')o.push({t:pr.caps?e.textContent.toUpperCase():e.textContent,pr});else if(e.nodeName==='w:tab')o.push({t:'    ',pr});
+        else if(e.nodeName==='w:br')o.push(A(e,'w:type')==='page'?{pb:true}:{br:true});else if(e.nodeName==='w:drawing'||e.nodeName==='w:pict')o.push({dr:e})}}
+    else if(/^w:(hyperlink|smartTag|ins|sdt|sdtContent|fldSimple)$/.test(c.nodeName))walk(c)}};walk(p);return o};
+  const lay=(p,W)=>{
+    const ppr=ch(p,'w:pPr'),sid=A(ch(ppr,'w:pStyle'),'w:val')||defId,cs=chain(sid);
+    const P=Object.assign({},ddP,...cs.map(s=>pp(s.p)),pp(ppr)),base=Object.assign({sz:11,f:'Calibri'},ddR,...cs.map(s=>rp(s.r)));
+    let lbl=null,left=P.left,hang=P.hanging;
+    if(P.num&&P.num.id&&P.num.id!=='0'){const d=nd(P.num.id,P.num.lv);if(d){const k=P.num.id+':'+P.num.lv;CT[k]=(CT[k]||0)+1;for(let v=P.num.lv+1;v<9;v++)delete CT[P.num.id+':'+v];
+      lbl=d.fmt==='bullet'?'•':d.txt.replace(/%(\d)/g,(_,n)=>fmtN(+n===P.num.lv+1?CT[k]:(CT[P.num.id+':'+(n-1)]||1),d.fmt));if(left==null)left=d.left||720;if(hang==null)hang=d.hang||360}}
+    const L0=tw(left||0),fi=lbl?0:tw((P.firstLine||0)-(hang||0)),lx=tw((left||0)-(hang||0)),runs=[];let pbA=false;
+    for(const r of runsOf(p,base)){
+      if(r.pb){pbA=true;continue}if(r.br){runs.push(r);continue}
+      if(r.dr){const ex=g1(r.dr,'wp:extent'),b=g1(r.dr,'a:blip'),im=b&&IM[AT(b,'r:embed')];if(im&&ex){let w=em(+AT(ex,'cx')),h=em(+AT(ex,'cy'));if(w>W-L0){h*=(W-L0)/w;w=W-L0}runs.push({img:im,w,h})}continue}
+      const q=r.pr;runs.push({t:r.t,f:(q.i?'italic ':'')+(q.b?'bold ':'')+(q.sz*K)+'px '+FF(q.f),s:q.sz*K,c:q.c,u:q.u})}
+    if(!runs.some(r=>r.img||(r.t&&r.t.trim())))runs.push({t:' ',f:(base.sz*K)+'px '+FF(base.f),s:base.sz*K});
+    const lines=wrapRuns(cx,runs,Math.max(W-L0,20),fi,P.jc),fx=P.ln&&P.lr!=='auto'?tw(P.ln):0,mu=P.ln&&P.lr==='auto'?P.ln/240:1;
+    return{lines,P,L0,fi,lx,lbl,lf:(base.b?'bold ':'')+(base.sz*K)+'px '+FF(base.f),lc:base.c,bf:tw(P.bf||0),af:tw(P.af||0),fx,mu,pbA}};
+  const lhf=(a,L)=>a.P.lr==='atLeast'?Math.max(a.fx,L.h):(a.fx||L.h*a.mu);
+  const lab=(a,x0,yy,h,L)=>{cx.font=a.lf;cx.fillStyle=a.lc||'#000';cx.textBaseline='alphabetic';cx.fillText(a.lbl,x0,yy+(h-L.h)/2+L.s*.92)};
+  const place=a=>{if(a.P.pbb&&y>TM)np();y+=a.bf;
+    a.lines.forEach((L,i)=>{const h=lhf(a,L);if(y+h>BM&&y>TM+1)np();drawLine(cx,L,LM+a.L0,y,CW-a.L0,i?0:a.fi,h);if(!i&&a.lbl)lab(a,LM+a.lx,y,h,L);y+=h});
+    y+=a.af;if(a.pbA)np()};
+  const tbl=tb=>{
+    const tp=ch(tb,'w:tblPr'),bd=ch(tp,'w:tblBorders'),ts=A(ch(tp,'w:tblStyle'),'w:val')||'',grid=ch(tb,'w:tblGrid'),cols=grid?[...grid.children].map(g=>tw(+A(g,'w:w'))):[];
+    const rows=[...tb.children].filter(c=>c.nodeName==='w:tr'),tcs=r=>[...r.children].filter(c=>c.nodeName==='w:tc'),spn=c=>+(A(ch(ch(c,'w:tcPr'),'w:gridSpan'),'w:val')||1);
+    const nc=Math.max(cols.length,...rows.map(r=>tcs(r).reduce((a,c)=>a+spn(c),0)));if(!cols.length)for(let i=0;i<nc;i++)cols.push(CW/nc);
+    let tot=cols.reduce((a,b)=>a+b,0);if(tot>CW){const k=CW/tot;cols.forEach((c,i)=>cols[i]=c*k)}
+    const border=(!!bd&&[...bd.children].some(b=>!['nil','none'].includes(A(b,'w:val'))))||/grid/i.test(ts),pad=tw(108);
+    rows.forEach(r=>{const cells=[];let ci=0;
+      tcs(r).forEach(c=>{const sp=spn(c),w=cols.slice(ci,ci+sp).reduce((a,b)=>a+b,0),x0=cols.slice(0,ci).reduce((a,b)=>a+b,0);
+        const ps=[...c.children].filter(e=>e.nodeName==='w:p').map(p=>lay(p,w-2*pad)),h=ps.reduce((a,p)=>a+p.bf+p.lines.reduce((s,L)=>s+lhf(p,L),0)+p.af,0),sh=A(ch(ch(c,'w:tcPr'),'w:shd'),'w:fill');
+        cells.push({ps,w,x0,h,sh:sh&&sh!=='auto'?'#'+sh:null});ci+=sp});
+      const rh=Math.max(tw(+(A(ch(ch(r,'w:trPr'),'w:trHeight'),'w:val')||0)),...cells.map(c=>c.h))+tw(60);
+      if(y+rh>BM&&y>TM+1)np();
+      cells.forEach(c=>{if(c.sh){cx.fillStyle=c.sh;cx.fillRect(LM+c.x0,y,c.w,rh)}let yy=y+tw(30);
+        c.ps.forEach(p=>{yy+=p.bf;p.lines.forEach((L,i)=>{const h=lhf(p,L);drawLine(cx,L,LM+c.x0+pad+p.L0,yy,c.w-2*pad-p.L0,i?0:p.fi,h);if(!i&&p.lbl)lab(p,LM+c.x0+pad+p.lx,yy,h,L);yy+=h});yy+=p.af});
+        if(border){cx.strokeStyle='#000';cx.lineWidth=Math.max(1,K*.5);cx.strokeRect(LM+c.x0,y,c.w,rh)}});
+      y+=rh});y+=tw(120)};
+  const walkB=n=>{for(const c of n.children){if(c.nodeName==='w:p')place(lay(c,CW));else if(c.nodeName==='w:tbl')tbl(c);else if(c.nodeName==='w:sdt')walkB(ch(c,'w:sdtContent')||c)}};
+  walkB(body);if(out.length>1&&y===TM)out.pop();return out}
+
+// ======================= bộ dựng trang: PPTX =======================
+async function renderPptx(f,dpi){
+  const z=await JSZip.loadAsync(await f.arrayBuffer()),K=dpi/72,e2=v=>v/914400*dpi,A=AT,ch=chd;
+  const pres=await xmlOf(z,'ppt/presentation.xml'),sz=g1(pres,'p:sldSz');if(!sz)throw new Error(t('không phải file .pptx hợp lệ'));
+  const W=e2(+A(sz,'cx')),H=e2(+A(sz,'cy')),mmW=+A(sz,'cx')/36000,mmH=+A(sz,'cy')/36000;
+  const th=await xmlOf(z,'ppt/theme/theme1.xml'),TC={},TF={};
+  if(th){const cs=g1(th,'a:clrScheme');if(cs)[...cs.children].forEach(c=>{const v=c.firstElementChild;TC[c.nodeName.replace('a:','')]=v?(v.nodeName==='a:sysClr'?A(v,'lastClr'):A(v,'val')):null});
+    ['major','minor'].forEach(k=>{const n=g1(th,'a:'+k+'Font');TF[k]=n&&A(ch(n,'a:latin'),'typeface')})}
+  const clr=n=>{const c=n&&[...n.children].find(e=>/^a:(srgbClr|schemeClr|sysClr)$/.test(e.nodeName));if(!c)return null;
+    const v=c.nodeName==='a:srgbClr'?A(c,'val'):c.nodeName==='a:sysClr'?A(c,'lastClr'):TC[({bg1:'lt1',tx1:'dk1',bg2:'lt2',tx2:'dk2'})[A(c,'val')]||A(c,'val')];return v?'#'+v:null};
+  const rmap=async p=>{const x=await xmlOf(z,p.replace(/([^/]+)$/,'_rels/$1')+'.rels'),m={};if(x)[...x.getElementsByTagName('Relationship')].forEach(r=>m[A(r,'Id')]={t:A(r,'Type'),g:A(r,'Target')});return m};
+  const resolve=(base,tg)=>{const a=base.split('/');a.pop();tg.split('/').forEach(s=>{if(s==='..')a.pop();else if(s!=='.'&&s!=='')a.push(s)});return a.join('/')};
+  const BMc={},getImg=async p=>{if(!(p in BMc)){const fl=z.file(p);try{BMc[p]=fl?await createImageBitmap(await fl.async('blob')):null}catch(e){BMc[p]=null}}return BMc[p]};
+  const phOf=s=>g1(s,'p:ph'),norm=t=>(t||'body').replace('ctrTitle','title');
+  const xfOf=n=>{const x=n&&(ch(ch(n,'p:spPr'),'a:xfrm')||ch(n,'p:xfrm'));if(!x)return null;const o=g1(x,'a:off'),e=g1(x,'a:ext');return o&&e?{x:+A(o,'x'),y:+A(o,'y'),w:+A(e,'cx'),h:+A(e,'cy')}:null};
+  const findPh=(D,ph)=>{if(!D||!ph)return null;const idx=A(ph,'idx'),ty=norm(A(ph,'type'));for(const s of D.getElementsByTagName('p:sp')){const p=phOf(s);if(!p)continue;if((idx!=null&&idx===A(p,'idx'))||(idx==null&&ty===norm(A(p,'type'))))return s}return null};
+  const ts=(M,kind,lv)=>{const st=g1(M,kind==='title'?'p:titleStyle':kind==='body'?'p:bodyStyle':'p:otherStyle'),l=st&&g1(st,'a:lvl'+(lv+1)+'pPr'),d=l&&ch(l,'a:defRPr');return{algn:A(l,'algn'),sz:A(d,'sz'),b:A(d,'b')==='1',c:clr(ch(d,'a:solidFill')),bu:A(ch(l,'a:buChar'),'char'),marL:A(l,'marL'),ind:A(l,'indent'),f:A(ch(d,'a:latin'),'typeface')}};
+  const face=f=>!f?null:f==='+mj-lt'?TF.major:f==='+mn-lt'?TF.minor:f.startsWith('+')?TF.minor:f;
+  const out=[],names=Object.keys(z.files).filter(n=>/^ppt\/slides\/slide\d+\.xml$/.test(n)).sort((a,b)=>a.match(/\d+/)[0]-b.match(/\d+/)[0]);
+  for(const sn of names){
+    const S=await xmlOf(z,sn),sr=await rmap(sn);let LD=null,MD=null,lr={},lp='';
+    for(const k in sr)if(/slideLayout$/.test(sr[k].t)){lp=resolve(sn,sr[k].g);LD=await xmlOf(z,lp);lr=await rmap(lp)}
+    let mp='';for(const k in lr)if(/slideMaster$/.test(lr[k].t)){mp=resolve(lp,lr[k].g);MD=await xmlOf(z,mp)}
+    const mr=mp?await rmap(mp):{};
+    const[cv,cx]=mkc(W,H);cv._mm=[mmW,mmH];
+    for(const D of [S,LD,MD]){const bg=g1(D,'p:bg'),c=bg&&clr(ch(ch(bg,'p:bgPr'),'a:solidFill'));if(c){cx.fillStyle=c;cx.fillRect(0,0,W,H);break}}
+    const drawText=(tb,ph,x0,y0,w,h,dsz,dc)=>{
+      if(!tb)return;const pt=ph?A(ph,'type')||'body':'',kind=!ph?'other':/title/i.test(pt)?'title':pt==='subTitle'?'sub':/^(dt|ftr|sldNum)$/.test(pt)?'oth':'body';
+      const bp=ch(tb,'a:bodyPr'),ins=(k,d)=>e2(+(AT(bp,k)||d)),iL=ins('lIns',91440),iR=ins('rIns',91440),iT=ins('tIns',45720),iB=ins('bIns',45720);
+      const anchor=A(bp,'anchor')||(kind==='title'?'ctr':'t'),fs=+(A(g1(bp,'a:normAutofit'),'fontScale')||100000)/100000;
+      const lays=[...tb.children].filter(c=>c.nodeName==='a:p').map(p=>{
+        const pr=ch(p,'a:pPr'),lv=+(A(pr,'lvl')||0),st=ts(MD,kind==='title'?'title':(kind==='body')?'body':'other',lv),noBu=!!ch(pr,'a:buNone')||kind==='sub'||kind==='title'||kind==='other'&&!ch(pr,'a:buChar')||kind==='oth';
+        const al=A(pr,'algn')||st.algn||(kind==='title'||kind==='sub'?'ctr':'l'),bu=ch(pr,'a:buChar')?A(ch(pr,'a:buChar'),'char'):(noBu?null:st.bu);
+        const marL=e2(+(A(pr,'marL')||st.marL||(bu?342900:0))),indent=e2(+(A(pr,'indent')||st.ind||(bu?-342900:0)));
+        const dsz0=dsz||(kind==='title'?44:kind==='sub'?32:kind==='body'?28:18),base=(st.sz?+st.sz/100:dsz0);
+        const runs=[];let last=null;
+        for(const c of p.children){
+          if(c.nodeName==='a:br')runs.push({br:true});
+          else if(c.nodeName==='a:r'||c.nodeName==='a:fld'){const rp=ch(c,'a:rPr'),sz=(+(A(rp,'sz')||0)/100||base)*fs,q=(A(rp,'b')==='1')||(A(rp,'b')==null&&st.b),i=A(rp,'i')==='1',col=clr(ch(rp,'a:solidFill'))||dc||st.c||'#000',fn=face(A(ch(rp,'a:latin'),'typeface'))||face(st.f)||TF.minor;
+            runs.push({t:(g1(c,'a:t')||{}).textContent||'',f:(i?'italic ':'')+(q?'bold ':'')+(sz*K)+'px '+FF(fn),s:sz*K,c:col,u:A(rp,'u')&&A(rp,'u')!=='none'});last={sz,q,col,fn}}}
+        if(!runs.some(r=>r.t&&r.t.trim())&&!runs.some(r=>r.br))runs.push({t:' ',f:(base*K)+'px '+FF(TF.minor),s:base*K});
+        const spc=ch(pr,'a:lnSpc'),mu=spc&&g1(spc,'a:spcPct')?+A(g1(spc,'a:spcPct'),'val')/100000:1,bef=ch(pr,'a:spcBef'),aft=ch(pr,'a:spcAft');
+        const bf=bef&&g1(bef,'a:spcPts')?+A(g1(bef,'a:spcPts'),'val')/100*K:(kind==='body'?base*K*.2:0),af=aft&&g1(aft,'a:spcPts')?+A(g1(aft,'a:spcPts'),'val')/100*K:0;
+        const lines=wrapRuns(cx,runs,Math.max(w-iL-iR-marL,20),bu?0:indent,al),tot=bf+af+lines.reduce((s,L)=>s+L.h*mu,0);
+        return{lines,mu,bf,af,marL,indent,ind0:bu?0:indent,bu,tot,last:last||{sz:base,col:'#000',q:false,fn:TF.minor}}});
+      const T=lays.reduce((s,l)=>s+l.tot,0);let yy=anchor==='ctr'?y0+(h-T)/2:anchor==='b'?y0+h-T-iB:y0+iT;
+      lays.forEach(l=>{yy+=l.bf;l.lines.forEach((L,i)=>{const lh=L.h*l.mu;drawLine(cx,L,x0+iL+l.marL,yy,w-iL-iR-l.marL,i?0:l.ind0,lh);
+        if(!i&&l.bu){cx.font=(l.last.sz*K)+'px '+FF(l.last.fn);cx.fillStyle=l.last.col;cx.fillText(l.bu,x0+iL+l.marL+l.indent,yy+(lh-L.h)/2+L.s*.92)}yy+=lh});yy+=l.af})};
+    const drawTree=async(D,R,bp,slide)=>{
+      const tree=g1(D,'p:spTree');if(!tree)return;
+      const each=async n=>{for(const s of n.children){
+        if(s.nodeName==='p:sp'){const ph=phOf(s);if(!slide&&ph)continue;let xx=xfOf(s);if(!xx&&ph)xx=xfOf(findPh(LD,ph))||xfOf(findPh(MD,ph));if(!xx)continue;
+          const x0=e2(xx.x),y0=e2(xx.y),w=e2(xx.w),h=e2(xx.h),sp=ch(s,'p:spPr'),fill=clr(ch(sp,'a:solidFill')),geom=A(g1(sp,'a:prstGeom'),'prst')||'rect';
+          if(fill){cx.fillStyle=fill;if(geom==='ellipse'){cx.beginPath();cx.ellipse(x0+w/2,y0+h/2,w/2,h/2,0,0,7);cx.fill()}else cx.fillRect(x0,y0,w,h)}
+          const ln=ch(sp,'a:ln');if(ln&&!ch(ln,'a:noFill')){const lc=clr(ch(ln,'a:solidFill'));if(lc){cx.strokeStyle=lc;cx.lineWidth=Math.max(1,e2(+(A(ln,'w')||12700)));cx.strokeRect(x0,y0,w,h)}}
+          drawText(ch(s,'p:txBody'),ph,x0,y0,w,h,undefined,clr(g1(g1(s,'p:style'),'a:fontRef')))}
+        else if(s.nodeName==='p:pic'){const xx=xfOf(s),b=g1(s,'a:blip'),r=b&&R[A(b,'r:embed')];if(xx&&r){const im=await getImg(resolve(bp,r.g));if(im)cx.drawImage(im,e2(xx.x),e2(xx.y),e2(xx.w),e2(xx.h))}}
+        else if(s.nodeName==='p:graphicFrame'){const xx=xfOf(s),tb=g1(s,'a:tbl');if(xx&&tb){let yy=e2(xx.y);const cols=[...g1(tb,'a:tblGrid').children].map(c=>e2(+A(c,'w')));
+          [...tb.children].filter(r=>r.nodeName==='a:tr').forEach(r=>{const rh=e2(+A(r,'h'));let xc=e2(xx.x);[...r.children].filter(c=>c.nodeName==='a:tc').forEach((c,i)=>{const fl=clr(ch(ch(c,'a:tcPr'),'a:solidFill'));if(fl){cx.fillStyle=fl;cx.fillRect(xc,yy,cols[i],rh)}cx.strokeStyle='#8a8a8a';cx.lineWidth=1;cx.strokeRect(xc,yy,cols[i],rh);drawText(ch(c,'a:txBody'),null,xc,yy,cols[i],rh,18);xc+=cols[i]});yy+=rh})}}
+        else if(s.nodeName==='p:grpSp')await each(s)}};
+      await each(tree)};
+    await drawTree(MD,mr,mp,false);await drawTree(LD,lr,lp,false);await drawTree(S,sr,sn,true);
+    out.push(cv)}
+  return out}
+
+// ======================= bộ dựng trang: XLSX / PDF =======================
+async function renderXlsx(f,e,dpi){
+  await needX();const wb=e==='csv'?XLSX.read(await f.text(),{type:'string'}):XLSX.read(await f.arrayBuffer(),{type:'array',cellStyles:true}),out=[],K=dpi/96,PWm=297,PHm=210,PW=PWm/25.4*dpi,PH=PHm/25.4*dpi,mg=15/25.4*dpi;
+  const grp=(a,lim)=>{const g=[];let cur=[],s=0;a.forEach((v,i)=>{if(cur.length&&s+v>lim){g.push(cur);cur=[];s=0}cur.push(i);s+=v});if(cur.length)g.push(cur);return g};
+  for(const n of wb.SheetNames){const ws=wb.Sheets[n];if(!ws['!ref'])continue;const rg=XLSX.utils.decode_range(ws['!ref']),cw=[],rh=[];
+    for(let c=rg.s.c;c<=rg.e.c;c++){const m=ws['!cols']&&ws['!cols'][c];cw.push(((m&&(m.wpx||(m.wch&&m.wch*7+5)))||64)*K)}
+    for(let r=rg.s.r;r<=rg.e.r;r++){const m=ws['!rows']&&ws['!rows'][r];rh.push(((m&&(m.hpx||(m.hpt&&m.hpt*96/72)))||20)*K)}
+    for(const cgi of grp(cw,PW-2*mg))for(const rgi of grp(rh,PH-2*mg-24*K)){const[c,x]=mkc(PW,PH);c._mm=[PWm,PHm];x.fillStyle='#555';x.font=(12*K)+'px Calibri,Arial,sans-serif';x.fillText(n,mg,mg-4*K);let yy=mg+16*K;
+      rgi.forEach(ri=>{let xx=mg;cgi.forEach(ci=>{const cell=ws[XLSX.utils.encode_cell({r:rg.s.r+ri,c:rg.s.c+ci})];x.strokeStyle='#bbb';x.lineWidth=1;x.strokeRect(xx,yy,cw[ci],rh[ri]);
+        if(cell&&(cell.w!=null||cell.v!=null)){x.save();x.beginPath();x.rect(xx,yy,cw[ci],rh[ri]);x.clip();x.fillStyle='#000';x.font=(11*K)+'px Calibri,Arial,sans-serif';const nm=cell.t==='n';x.textAlign=nm?'right':'left';x.fillText(String(cell.w!=null?cell.w:cell.v),nm?xx+cw[ci]-3*K:xx+3*K,yy+rh[ri]*.7);x.restore()}xx+=cw[ci]});yy+=rh[ri]});out.push(c)}}
+  return out}
+async function renderPdf(f,dpi){
+  await needPdf();const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise,out=[];
+  for(let n=1;n<=pdf.numPages;n++){const pg=await pdf.getPage(n),vp=pg.getViewport({scale:dpi/72}),[c,x]=mkc(vp.width,vp.height);c._mm=[vp.width/dpi*25.4,vp.height/dpi*25.4];
+    await pg.render({canvasContext:x,viewport:vp}).promise;out.push(c)}
+  return out}
+async function renderDoc(d,dpi){
+  const e=d.e;if(e==='docx')return renderDocx(d.file,dpi);if(e==='pptx')return renderPptx(d.file,dpi);if(e==='pdf')return renderPdf(d.file,dpi);
+  if(e==='xlsx'||e==='xls'||e==='csv')return renderXlsx(d.file,e,dpi);
+  const cs=textPages(flat(d.bl),210,297),w2=Math.round(210/25.4*dpi);return cs.map(c=>{let o=c;if(Math.abs(c.width-w2)>2){const[n,x]=mkc(w2,c.height*w2/c.width);x.imageSmoothingQuality='high';x.drawImage(c,0,0,n.width,n.height);c.width=0;o=n}o._mm=[210,297];return o})}
+async function pmOf(d){
+  if(d.pm)return d.pm;let m=[210,297];
+  try{if(d.e==='pdf'){await needPdf();const v=(await (await pdfjsLib.getDocument({data:await d.file.arrayBuffer()}).promise).getPage(1)).getViewport({scale:1});m=[v.width/72*25.4,v.height/72*25.4]}
+    else if(d.e==='pptx'){const z=await JSZip.loadAsync(await d.file.arrayBuffer()),s=/<p:sldSz[^>]*cx="(\d+)"[^>]*cy="(\d+)"/.exec(await z.file('ppt/presentation.xml').async('string'));if(s)m=[+s[1]/36000,+s[2]/36000]}
+    else if(d.e==='docx'){const z=await JSZip.loadAsync(await d.file.arrayBuffer()),s=/<w:pgSz[^>]*w:w="(\d+)"[^>]*w:h="(\d+)"/.exec(await z.file('word/document.xml').async('string'));if(s)m=[+s[1]/1440*25.4,+s[2]/1440*25.4]}
+    else if(/^(xlsx|xls|csv)$/.test(d.e))m=[297,210]}catch(e){}
+  return d.pm=m}
+
+// ======================= xuất ảnh JPG / PNG =======================
+const crcT=(()=>{const a=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;a[n]=c>>>0}return a})();
+const crc32=b=>{let c=~0;for(const v of b)c=crcT[(c^v)&255]^(c>>>8);return ~c>>>0};
+async function setDpi(blob,fmt,dpi){
+  const b=new Uint8Array(await blob.arrayBuffer());
+  if(fmt==='jpg'){if(b[2]===0xFF&&b[3]===0xE0&&b[6]===0x4A){b[13]=1;b[14]=dpi>>8;b[15]=dpi&255;b[16]=dpi>>8;b[17]=dpi&255}return new Blob([b],{type:'image/jpeg'})}
+  const ppm=Math.round(dpi/.0254),c=new Uint8Array(21),dv=new DataView(c.buffer);dv.setUint32(0,9);c.set([0x70,0x48,0x59,0x73],4);dv.setUint32(8,ppm);dv.setUint32(12,ppm);c[16]=1;dv.setUint32(17,crc32(c.subarray(4,17)));
+  const o=new Uint8Array(b.length+21);o.set(b.subarray(0,33));o.set(c,33);o.set(b.subarray(33),54);return new Blob([o],{type:'image/png'})}
+const imgOpts=()=>({fmt:$('ifm').value,dpi:+$('idp').value||200,w:Math.max(0,+$('iwd').value||0),q:+$('iqt').value/100,gray:$('icl').value==='g'});
+async function exportImages(act,O){
+  const st=$('st'),pi=$('pi'),files=[],ext=O.fmt==='png'?'png':'jpg',mime=O.fmt==='png'?'image/png':'image/jpeg',used={},pad=n=>String(n).padStart(3,'0'),base=($('fn').value.trim()||'Swiftly Convert').replace(/[\\/:*?"<>|]/g,'_');
+  const uname=n=>{let k=n,i=1;while(used[k])k=n+'_'+(++i);used[k]=1;return k};let cnt=0;
+  const fin=async(c,name)=>{let cv=c;
+    if(O.w&&cv.width!==O.w){const[n,x]=mkc(O.w,cv.height*O.w/cv.width);x.imageSmoothingQuality='high';x.drawImage(cv,0,0,n.width,n.height);cv.width=0;cv=n}
+    if(O.gray){const x=cv.getContext('2d'),im=x.getImageData(0,0,cv.width,cv.height),d=im.data;for(let i=0;i<d.length;i+=4){const g=.299*d[i]+.587*d[i+1]+.114*d[i+2];d[i]=d[i+1]=d[i+2]=g}x.putImageData(im,0,0)}
+    const eff=O.w?O.dpi:O.dpi,b=await setDpi(await toBl(cv,mime,O.q),O.fmt,eff);cv.width=0;files.push([uname(name)+'.'+ext,b]);cnt++;st.textContent=t('Đang xuất ảnh {0}/{1}…',cnt,'…');await tick()};
+  for(const d of act){st.textContent=t('Đang dựng trang {0}…',d.name);await tick();const cs=await renderDoc(d,O.dpi),b00=d.name.replace(/\.[^.]+$/,''),b0=act.filter(x=>x.name.replace(/\.[^.]+$/,'')===b00).length>1?b00+'_'+d.e:b00;for(let i=0;i<cs.length;i++)await fin(cs[i],cs.length>1?b0+'_'+pad(i+1):b0)}
+  for(const it of items){const odd=it.rot%180!==0,W0=odd?it.h:it.w,H0=odd?it.w:it.h,[c,x]=mkc(W0,H0);x.translate(W0/2,H0/2);x.rotate(it.rot*Math.PI/180);x.drawImage(it.img,-it.w/2,-it.h/2,it.w,it.h);await fin(c,it.name.replace(/\.[^.]+$/,''))}
+  if(files.length===1)return[files[0]];
+  st.textContent=t('Đang đóng gói ảnh (.zip)…');const z=new JSZip();files.forEach(([n,b])=>z.file(n,b));
+  return[[base+'_images.zip',await z.generateAsync({type:'blob',compression:'STORE'})]]}
+async function updInfo(){
+  try{const O=imgOpts(),n=docs.length+items.length;let wmm=210,hmm=297,src=t('Trang A4 mặc định'),w0=0,h0=0;
+    if(docs[0]){const m=await pmOf(docs[0]);wmm=m[0];hmm=m[1];src=docs[0].name}else if(items[0]){w0=items[0].w;h0=items[0].h;src=items[0].name}
+    const ar=w0?h0/w0:hmm/wmm,wpx=O.w||w0||Math.round(wmm/25.4*O.dpi),hpx=O.w?Math.round(O.w*ar):(h0||Math.round(hmm/25.4*O.dpi));
+    const est=O.fmt==='jpg'?wpx*hpx*(.05+.2*Math.pow(O.q,3)):wpx*hpx*.1,sz=est>1048576?(est/1048576).toFixed(1)+' MB':Math.round(est/1024)+' KB';
+    const row=(a,b)=>'<div class="r"><span>'+a+'</span><span>'+b+'</span></div>';
+    $('ii').innerHTML=row(t('Nguồn mẫu'),esc(src))+row(t('Số tệp nguồn'),n)+(docs[0]?row(t('Kích thước trang'),Math.round(wmm)+' × '+Math.round(hmm)+' mm'):'')+row(t('Kích thước ảnh'),wpx+' × '+hpx+' px')+row(t('Megapixel'),(wpx*hpx/1e6).toFixed(2)+' MP')+row(t('Độ phân giải'),O.w&&!docs[0]?t('theo chiều rộng tùy chỉnh'):O.dpi+' DPI')+row(t('Định dạng'),O.fmt==='jpg'?'JPG · '+t('Chất lượng {0}%',Math.round(O.q*100)):'PNG · '+t('Nén không mất dữ liệu'))+row(t('Dung lượng ước tính (mỗi ảnh)'),'≈ '+sz)+(n?'':'<div class="warn">'+t('Hãy thêm ảnh hoặc tài liệu trước khi chuyển đổi.')+'</div>');
+    $('ig').disabled=!n}catch(e){}}
+let prevFt='docx';
+$('ft').addEventListener('change',()=>{const v=$('ft').value;if(v==='jpg'||v==='png'){$('ifm').value=v;ddr($('ifm'));$('ibx').style.display='';updInfo();openM('ovi')}else{prevFt=v;$('ibx').style.display='none'}});
+$('ib').onclick=()=>{updInfo();openM('ovi')};
+['ifm','idp','icl'].forEach(i=>$(i).addEventListener('change',()=>{if(i==='ifm'){$('ft').value=$('ifm').value;ddr($('ft'))}updInfo()}));
+$('iwd').oninput=updInfo;$('iqt').oninput=()=>{$('iqv').textContent=$('iqt').value;updInfo()};
+$('ix').onclick=()=>{closeM('ovi');$('ft').value=prevFt;ddr($('ft'));$('ibx').style.display='none'};
+$('ig').onclick=()=>{closeM('ovi');$('go').click()};
+
+// ======================= sao chép / nén file cùng định dạng =======================
+async function shrinkZip(file){
+  const z=await JSZip.loadAsync(await file.arrayBuffer());
+  for(const n of Object.keys(z.files)){if(!/\/media\/[^/]+\.(jpe?g|png)$/i.test(n))continue;
+    const buf=await z.file(n).async('arraybuffer'),isP=/png$/i.test(n);let bm;try{bm=await createImageBitmap(new Blob([buf]))}catch(e){continue}
+    const k=Math.min(1,1600/Math.max(bm.width,bm.height));if(isP&&k===1)continue;
+    const[c,x]=mkc(bm.width*k,bm.height*k);if(isP)x.clearRect(0,0,c.width,c.height);x.drawImage(bm,0,0,c.width,c.height);
+    const nb=await (await toBl(c,isP?'image/png':'image/jpeg',.72)).arrayBuffer();c.width=0;if(nb.byteLength<buf.byteLength)z.file(n,nb)}
+  return z.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:9},mimeType:file.type||'application/octet-stream'})}
+async function shrinkPdf(file){
+  await need(()=>window.PDFLib,['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js','https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js'],'Không tải được thư viện nén PDF. Kiểm tra mạng rồi thử lại.');
+  const{PDFDocument,PDFName,PDFRawStream,PDFNumber}=PDFLib,doc=await PDFDocument.load(await file.arrayBuffer(),{ignoreEncryption:true,updateMetadata:false}),nm=s=>PDFName.of(s);
+  for(const[ref,o]of doc.context.enumerateIndirectObjects()){
+    if(!(o instanceof PDFRawStream))continue;const d=o.dict;
+    if(String(d.get(nm('Subtype')))!=='/Image'||String(d.get(nm('Filter')))!=='/DCTDecode')continue;
+    const cs=String(d.get(nm('ColorSpace')));if(cs!=='/DeviceRGB'&&cs!=='/DeviceGray')continue;
+    const bytes=o.contents,bm=await createImageBitmap(new Blob([bytes],{type:'image/jpeg'})).catch(()=>null);if(!bm)continue;
+    const k=Math.min(1,1600/Math.max(bm.width,bm.height)),[c,x]=mkc(bm.width*k,bm.height*k);x.drawImage(bm,0,0,c.width,c.height);
+    const nb=new Uint8Array(await (await toBl(c,'image/jpeg',.7)).arrayBuffer());
+    if(nb.length<bytes.length*.9){const nd=d.clone();nd.set(nm('Width'),PDFNumber.of(c.width));nd.set(nm('Height'),PDFNumber.of(c.height));nd.set(nm('ColorSpace'),nm('DeviceRGB'));nd.delete(nm('Decode'));doc.context.assign(ref,PDFRawStream.of(nd,nb))}
+    c.width=0}
+  return new Blob([await doc.save({useObjectStreams:true})],{type:'application/pdf'})}
+async function keepFile(d,sm){
+  if(!sm)return d.file;
+  try{let b;if(/^(docx|pptx|xlsx)$/.test(d.e))b=await shrinkZip(d.file);else if(d.e==='pdf')b=await shrinkPdf(d.file);else return d.file;return b.size<d.file.size?b:d.file}catch(e){console.warn(e);return d.file}}
+
 function makePdf(pg){
-  if(!window.jspdf)throw new Error('Không tải được thư viện PDF, hãy kiểm tra mạng rồi thử lại');
+  if(!window.jspdf)throw new Error(t('Không tải được thư viện PDF, hãy kiểm tra mạng rồi thử lại'));
   const {jsPDF}=window.jspdf;let d=null;
   pg.forEach(p=>{const o=p.land?'l':'p',f=[Math.min(p.pw,p.ph),Math.max(p.pw,p.ph)];
     if(!d)d=new jsPDF({unit:'mm',format:f,orientation:o,compress:true});else d.addPage(f,o);
@@ -372,42 +773,38 @@ function makePdf(pg){
 async function saveFile(n,b){
   const st=$('st');let dls=null;
   try{dls=window.claude?await claude.use('downloads'):null}catch(e){}
-  if(dls){
-    try{await dls.save({filename:n,data:b});st.textContent='Đã tải '+n+' về máy.'}
-    catch(e){st.textContent=e.code==='declined'?'Bạn đã hủy tải file, bấm lại nút để tải.':'Không tải được: '+(e.message||e.code)}
-  }else{
-    const u=URL.createObjectURL(b),a=document.createElement('a');
-    a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();
-  }
-}
+  if(dls){try{await dls.save({filename:n,data:b});st.textContent=t('Đã tải {0} về máy.',n)}catch(e){st.textContent=e.code==='declined'?t('Bạn đã hủy tải file, bấm lại nút để tải.'):t('Không tải được: ')+(e.message||e.code)}}
+  else{const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}}
 function showDl(res){
   const dl=$('dl');dl.innerHTML='';
-  res.forEach(([n,b])=>{const bt=document.createElement('button');bt.className='pri';
-    bt.textContent='⬇ Tải '+n+' ('+(b.size/1048576).toFixed(2)+' MB)';
-    bt.onclick=()=>saveFile(n,b);dl.appendChild(bt)});
-  const tot=res.reduce((a,r)=>a+r[1].size,0);$('st').textContent='Hoàn tất '+res.length+' file. Bấm nút bên dưới để tải về máy.'+(tot>15728640&&!$('sm').checked?' File khá nặng, hãy tick "Giảm dung lượng file" rồi chuyển đổi lại để nhẹ hơn.':'');
+  res.forEach(([n,b])=>{const bt=document.createElement('button');bt.className='pri';bt.textContent=t('⬇ Tải {0} ({1} MB)',n,(b.size/1048576).toFixed(2));bt.onclick=()=>saveFile(n,b);dl.appendChild(bt)});
+  const tot=res.reduce((a,r)=>a+r[1].size,0);$('st').textContent=t('Hoàn tất {0} file. Bấm nút bên dưới để tải về máy.',res.length)+(tot>15728640&&!$('sm').checked?t(' File khá nặng, hãy tick "Giảm dung lượng file" rồi chuyển đổi lại để nhẹ hơn.'):'');
 }
 
-$('go').onclick=async()=>{
-  const btn=$('go'),st=$('st'),pb=$('pb'),pi=$('pi');
-  btn.disabled=true;pb.style.display='block';pi.style.width='0';st.textContent='Đang xử lý…';$('dl').innerHTML='';
+async function one(f,act){
+  const st=$('st'),pi=$('pi');
+  if(f==='jpg'||f==='png')return exportImages(act,Object.assign(imgOpts(),{fmt:f}));
+  const NI=/^(docx|pdf|pptx)$/.test(f),bak=items,vis=[];
   try{
+    const rdpi=({1:220,2:160,3:110,4:250})[$('q').value]||160,visual=NI&&$('md').value==='v',vdocs=visual?act.filter(d=>!/^(txt|md)$/.test(d.e)):[];
+    for(const d of vdocs){st.textContent=t('Đang dựng trang {0}…',d.name);await tick();const cs=await renderDoc(d,rdpi);cs.forEach((c,i)=>vis.push({id:0,name:d.name+' #'+(i+1),img:c,w:c.width,h:c.height,rot:0,mm:[Math.min(...c._mm),Math.max(...c._mm)]}))}
+    items=[...vis,...bak];
     const [PW,PH]=PAGES[$('pg').value],orient=$('or').value,m=Math.max(0,+$('mg').value||0),
           vAlign=$('va').value==='center',Q=($('sm').checked?QO:QS)[$('q').value];
-    const zip=new JSZip(),rels=[],body=[],pages=[],tp=[],bl=allBl(),F=FM[$('ft').value],NI=F.some(f=>/^(docx|pdf|pptx)$/.test(f));
-    if(!bl.length&&!NI)throw new Error('Excel và TXT chỉ xuất được chữ. Hãy thêm tài liệu, hoặc chọn Word / PDF / PowerPoint để xuất ảnh.');
+    const zip=new JSZip(),rels=[],body=[],pages=[],tp=[],bl=allBl(NI?act.filter(d=>!vdocs.includes(d)):act),F=[f];
+    if(!bl.length&&!NI)throw new Error(t('Excel và TXT chỉ xuất được chữ. Hãy thêm tài liệu, hoặc chọn Word / PDF / PowerPoint để xuất ảnh.'));
     if(bl.length){
       const ts='<w:sectPr><w:pgSz w:w="'+mm2tw(PW)+'" w:h="'+mm2tw(PH)+'"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr>';
       body.push(docxBody(bl));body.push(items.length?'<w:p><w:pPr>'+ts+'</w:pPr></w:p>':ts);
-      if(F.includes('pdf')){st.textContent='Đang dàn trang văn bản…';await new Promise(r=>setTimeout(r,20));
+      if(F.includes('pdf')){st.textContent=t('Đang dàn trang văn bản…');await new Promise(r=>setTimeout(r,20));
         for(const c of textPages(flat(bl),PW,PH)){const jb=await (await toBlob(c,.92)).arrayBuffer();tp.push({buf:jb,land:false,pw:PW,ph:PH,w:PW,h:PH,x:0,y:0});c.width=c.height=0}}
     }
     for(let i=0;i<(NI?items.length:0);i++){
-      const it=items[i],odd=it.rot%180!==0;
-      const ow=odd?it.h:it.w,oh=odd?it.w:it.h,ld=orient==='l'||(orient==='auto'&&ow>oh),ppw=ld?PH:PW,pph=ld?PW:PH,fit=Math.max(Math.min((ppw-2*m)/ow,(pph-2*m)/oh)*.995,.001),kt=Q.dpi?fit/25.4*Q.dpi:Infinity;
+      const it=items[i],odd=it.rot%180!==0,[PWi,PHi]=it.mm||[PW,PH];
+      const ow=odd?it.h:it.w,oh=odd?it.w:it.h,ld=orient==='l'||(orient==='auto'&&ow>oh),ppw=ld?PHi:PWi,pph=ld?PWi:PHi,fit=Math.max(Math.min((ppw-2*m)/ow,(pph-2*m)/oh)*.995,.001),kt=Q.dpi?fit/25.4*Q.dpi:Infinity;
       let iw=it.w,ih=it.h,k=1,src=it.img;
       const long=Math.max(iw,ih);
-      k=Q.en?Math.min(kt,+$('up').value,6000/long):Math.min(1,kt,Q.max?Q.max/long:1);
+      k=(Q.en&&!it.mm)?Math.min(kt,+$('up').value,6000/long):Math.min(1,kt,Q.max?Q.max/long:1);
       iw=Math.round(iw*k);ih=Math.round(ih*k);
       
       {const f=k;
@@ -416,14 +813,14 @@ $('go').onclick=async()=>{
       const c=document.createElement('canvas');c.width=W;c.height=H;
       const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,H);
       x.translate(W/2,H/2);x.rotate(it.rot*Math.PI/180);x.drawImage(src,-iw/2,-ih/2,iw,ih);
-      if(Q.en){st.textContent='Đang cải thiện ảnh '+(i+1)+'/'+items.length+' (có thể mất vài giây)…';await new Promise(r=>setTimeout(r,20));x.setTransform(1,0,0,1,0,0);enhance(c)}
+      if(Q.en){st.textContent=t('Đang cải thiện ảnh {0}/{1} (có thể mất vài giây)…',i+1,items.length);await new Promise(r=>setTimeout(r,20));x.setTransform(1,0,0,1,0,0);enhance(c)}
       const blob=await toBlob(c,Q.q);
       const jb=await blob.arrayBuffer();zip.file('word/media/img'+(i+1)+'.jpg',jb.slice(0));
       c.width=c.height=0;
       rels.push('<Relationship Id="rId'+(i+10)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/img'+(i+1)+'.jpg"/>');
 
       let land=orient==='l'||(orient==='auto'&&W>H);
-      const pw=land?PH:PW,ph=land?PW:PH;
+      const pw=land?PHi:PWi,ph=land?PWi:PHi;
       const cw=Math.max(pw-2*m,1),ch=Math.max(ph-2*m,1);
       const s=Math.min(cw/W,ch/H)*0.995;
       const ex=mm2emu(W*s),ey=mm2emu(H*s);
@@ -432,7 +829,7 @@ $('go').onclick=async()=>{
       body.push(p);pages.push({buf:jb,land,pw,ph,w:W*s,h:H*s,x:m+(cw-W*s)/2,y:vAlign?m+(ch-H*s)/2:m});
       if(i===items.length-1)body.push(sect);
       pi.style.width=((i+1)/items.length*95)+'%';
-      st.textContent='Đang xử lý ảnh '+(i+1)+'/'+items.length+'…';
+      st.textContent=t('Đang xử lý ảnh {0}/{1}…',i+1,items.length);
       await new Promise(r=>setTimeout(r));
     }
     const X='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
@@ -440,27 +837,36 @@ $('go').onclick=async()=>{
     zip.file('_rels/.rels',X+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
     zip.file('word/_rels/document.xml.rels',X+'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+rels.join('')+'</Relationships>');
     zip.file('word/document.xml',X+'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>'+body.join('')+'</w:body></w:document>');
-    const base=($('fn').value.trim()||'Swiftly Convert').replace(/[\\/:*?"<>|]/g,'_'),fmt=$('ft').value,res=[];
+    const base=($('fn').value.trim()||'Swiftly Convert').replace(/[\\/:*?"<>|]/g,'_'),res=[];
     if(F.includes('docx')){
-      st.textContent='Đang đóng gói file Word…';
+      st.textContent=t('Đang đóng gói file Word…');
       res.push([base+'.docx',await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:1}})]);
     }
     if(F.includes('pdf')){
-      st.textContent='Đang tạo file PDF…';await new Promise(r=>setTimeout(r));
+      st.textContent=t('Đang tạo file PDF…');await new Promise(r=>setTimeout(r));
       res.push([base+'.pdf',makePdf([...tp,...pages])]);
     }
     if(F.includes('pptx')){
-      st.textContent='Đang tạo file PowerPoint…';await new Promise(r=>setTimeout(r));
+      st.textContent=t('Đang tạo file PowerPoint…');await new Promise(r=>setTimeout(r));
       res.push([base+'.pptx',await makePptx(flat(bl),pages,base)]);
     }
-    if(F.includes('xlsx')){st.textContent='Đang tạo file Excel…';await new Promise(r=>setTimeout(r));res.push([base+'.xlsx',await makeXlsx(bl)])}
+    if(F.includes('xlsx')){st.textContent=t('Đang tạo file Excel…');await new Promise(r=>setTimeout(r));res.push([base+'.xlsx',await makeXlsx(bl)])}
     if(F.includes('txt')){res.push([base+'.txt',makeTxt(bl)])}
-    pi.style.width='100%';
-    showDl(res);
-  }catch(e){
-    st.textContent='Có lỗi xảy ra: '+e.message;
-  }
-  upd();
+    return res;
+  }finally{items=bak;vis.forEach(v=>{v.img.width=0})}
+}
+$('go').onclick=async()=>{
+  const btn=$('go'),st=$('st'),pb=$('pb'),pi=$('pi');
+  btn.disabled=true;pb.style.display='block';pi.style.width='0';st.textContent=t('Đang xử lý…');$('dl').innerHTML='';
+  try{
+    const Fs=FM[$('ft').value],sm=$('sm').checked,res=[],same=docs.filter(d=>Fs.some(f=>sameFmt(d.e,f)));
+    if(same.length&&!await confirmSame(same.map(d=>d.name))){docs=docs.filter(d=>!same.includes(d));renderDocs();pb.style.display='none';st.textContent=t('Đã xóa các tệp cùng định dạng khỏi danh sách và không thực hiện chuyển đổi.');return}
+    for(const d of same){st.textContent=t(sm?'Đang nén {0}…':'Đang sao chép {0}…',d.name);await tick();res.push([d.name,await keepFile(d,sm)])}
+    for(const f of Fs){const act=docs.filter(d=>!sameFmt(d.e,f));if(!act.length&&!items.length)continue;res.push(...await one(f,act))}
+    if(!res.length)throw new Error(t('Không có nội dung để chuyển đổi.'));
+    pi.style.width='100%';showDl(res)
+  }catch(e){st.textContent=t('Có lỗi xảy ra: ')+e.message}
+  finally{upd()}
 };
 </script>
 <script>
@@ -472,10 +878,10 @@ function dd(sel,label){
   w.className='dd';b.type='button';b.className='dt';b.setAttribute('aria-haspopup','listbox');ul.className='mn';ul.setAttribute('role','listbox');
   sel.hidden=true;sel.after(w);w.append(b,ul);
   const host=()=>w.closest('.card,.top'),
-  mark=()=>{[...ul.children].forEach((li,i)=>li.setAttribute('aria-selected',i===sel.selectedIndex));b.textContent=label||sel.options[sel.selectedIndex].text},
+  mark=()=>{[...ul.children].forEach((li,i)=>li.setAttribute('aria-selected',i===sel.selectedIndex));b.textContent=typeof label==='function'?label():(label||sel.options[sel.selectedIndex].text)},
   close=()=>{w.classList.remove('open');b.setAttribute('aria-expanded','false');setTimeout(()=>{const h=host();if(h&&!w.classList.contains('open'))h.classList.remove('up')},240)},
-  open=()=>{document.querySelectorAll('.dd.open').forEach(d=>d._c());w.classList.add('open');b.setAttribute('aria-expanded','true');const h=host();if(h)h.classList.add('up')};
-  w._c=close;
+  open=()=>{document.querySelectorAll('.dd.open').forEach(d=>d._c());w.classList.add('open');b.setAttribute('aria-expanded','true');if(w.closest('.md')){const r=b.getBoundingClientRect();Object.assign(ul.style,{position:'fixed',left:r.left+'px',top:(r.bottom+6)+'px',width:r.width+'px',right:'auto'})}const h=host();if(h)h.classList.add('up')};
+  w._c=close;w._r=()=>{[...ul.children].forEach((li,i)=>{li.textContent=sel.options[i].text});mark()};
   [...sel.options].forEach((o,i)=>{const li=document.createElement('li');li.textContent=o.text;li.setAttribute('role','option');
     li.onclick=e=>{e.stopPropagation();sel.selectedIndex=i;sel.dispatchEvent(new Event('change',{bubbles:true}));mark();close()};ul.append(li)});
   b.onclick=e=>{e.stopPropagation();w.classList.contains('open')?close():open()};
@@ -485,8 +891,10 @@ document.addEventListener('click',()=>document.querySelectorAll('.dd.open').forE
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(d=>d._c())});
 function setTh(t){R.dataset.th=t;const u=BG[t];bg.style.opacity=0;setTimeout(()=>{bg.style.backgroundImage=u?'url('+u+')':'none';bg.style.opacity=u?1:0},u?380:0)}
 const th=document.getElementById('th');th.value='def';th.onchange=()=>setTh(th.value);
-document.querySelectorAll('select').forEach(s=>dd(s,s.id==='th'?'🎨 Switch themes':''));
+document.querySelectorAll('select').forEach(s=>dd(s,s.id==='th'?()=>t('🎨 Đổi giao diện'):''));
 setTimeout(()=>Object.values(BG).forEach(u=>{new Image().src=u}),1500);
+applyLang();render();renderDocs();
+document.getElementById('wc').onclick=()=>closeM('ovw');setTimeout(()=>openM('ovw'),220);
 })();
 </script>
 </body>
